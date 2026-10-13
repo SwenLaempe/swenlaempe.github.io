@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://swenlaempe.github.io/sitemap.xml

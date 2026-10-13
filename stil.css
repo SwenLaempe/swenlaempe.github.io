@@ -1,0 +1,102 @@
+/* Personenseite Swen Laempe · Montag.-Look (frame.md der Serie): dunkel, Montserrat, Türkis */
+@font-face{font-family:"Montserrat";src:url(schrift/montserrat-latin.woff2) format("woff2");font-weight:100 900;font-style:normal;font-display:swap}
+:root{
+  --bg:#0a0a0e;--bg2:#121218;--text:#e8e8ec;--muted:#a3a3ae;--acc:#33c2b6;--acc-l:#8fe9de;--acc-d:#17938b;
+  --hair:rgba(232,232,236,.12);--maxw:1080px;color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+body{margin:0;background:var(--bg);color:var(--text);font:400 17px/1.62 "Montserrat",system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+img{display:block;max-width:100%;height:auto}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px}
+:focus-visible{outline:2px solid var(--acc-l);outline-offset:3px;border-radius:6px}
+
+.kicker{font:700 12px/1.2 "Montserrat",sans-serif;letter-spacing:.3em;text-transform:uppercase;color:var(--acc)}
+.verlauf{background:linear-gradient(100deg,var(--acc-l),var(--acc) 45%,var(--acc-d));-webkit-background-clip:text;background-clip:text;color:transparent}
+.punkt{color:var(--acc)}
+
+/* Kopf */
+.kopf{position:sticky;top:0;z-index:5;background:rgba(10,10,14,.82);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-bottom:1px solid var(--hair)}
+.kopf .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:58px}
+.marke{font-weight:800;font-size:17px;letter-spacing:-.02em;text-decoration:none;white-space:nowrap}
+.kopf nav{display:flex;gap:18px;font-size:14px;font-weight:600}
+.kopf nav a{text-decoration:none;color:var(--muted)}
+.kopf nav a:hover{color:var(--text)}
+@media (max-width:420px){.kopf nav{gap:12px;font-size:13px}.kopf nav .weit{display:none}.eingang .kicker{letter-spacing:.18em;font-size:11px}}
+
+/* Eingang */
+.eingang{position:relative;padding:56px 0 64px}
+.eingang::before{content:"";position:absolute;inset:-58px 0 0;background:radial-gradient(60% 55% at 78% 30%,rgba(51,194,182,.16),transparent 70%);pointer-events:none}
+.eingang .wrap{position:relative;display:grid;gap:36px;align-items:center}
+@media (min-width:820px){.eingang .wrap{grid-template-columns:1.25fr 1fr;gap:56px}.eingang{padding:88px 0 96px}}
+h1{font-weight:800;font-size:clamp(48px,10.5vw,92px);line-height:.95;letter-spacing:-.035em;margin:16px 0 18px}
+.lead{font-size:clamp(18px,2.2vw,21px);line-height:1.5;color:var(--text);max-width:34ch;margin:0 0 26px}
+.botschaft{margin:0 0 30px;padding:0;font-weight:700;font-size:clamp(22px,3.2vw,30px);line-height:1.25;letter-spacing:-.015em;max-width:24ch;text-wrap:balance}
+.knoepfe{display:flex;flex-wrap:wrap;gap:12px}
+.knopf{display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:12px 22px;border-radius:999px;font-weight:700;font-size:16px;text-decoration:none;transition:transform .15s ease,background .15s ease,border-color .15s ease}
+.knopf.voll{background:var(--acc);color:#06100f}
+.knopf.voll:hover{background:var(--acc-l)}
+.knopf.leer{border:1px solid var(--hair);color:var(--text)}
+.knopf.leer:hover{border-color:var(--acc)}
+.knopf:active{transform:translateY(1px)}
+.bild{margin:0;justify-self:center;width:min(100%,420px)}
+.bild img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:28px}
+@media (max-width:819px){.bild{order:-1;width:min(78%,340px)}}
+
+/* Abschnitte */
+section{padding:72px 0;border-top:1px solid var(--hair)}
+h2{font-weight:800;font-size:clamp(32px,5.4vw,52px);line-height:1.02;letter-spacing:-.03em;margin:14px 0 22px;text-wrap:balance}
+.text{max-width:62ch;color:var(--text)}
+.text p{margin:0 0 16px}
+.leise{color:var(--muted)}
+
+/* Themen */
+.themen{display:grid;gap:8px 48px;margin-top:34px}
+@media (min-width:760px){.themen{grid-template-columns:1fr 1fr}}
+.thema{border-top:1px solid var(--hair);padding:22px 0 18px}
+.thema h3{margin:0 0 10px;font:700 12px/1.2 "Montserrat",sans-serif;letter-spacing:.3em;text-transform:uppercase;color:var(--acc)}
+.thema .satz{margin:0 0 8px;font-weight:700;font-size:21px;line-height:1.3;letter-spacing:-.01em}
+.thema p:last-child{margin:0;color:var(--muted)}
+
+/* Folgen */
+.folgen{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin:34px 0 30px;padding:0;list-style:none}
+@media (min-width:760px){.folgen{grid-template-columns:repeat(4,minmax(0,1fr));gap:22px}}
+.folge a{display:block;text-decoration:none}
+.folge .rahmen{position:relative;display:block;border-radius:16px;overflow:hidden;border:1px solid var(--hair);background:#000;transition:border-color .15s ease,transform .15s ease}
+.folge a:hover .rahmen{border-color:var(--acc);transform:translateY(-2px)}
+.folge img{width:100%;aspect-ratio:9/16;object-fit:cover}
+.spiel{position:absolute;right:12px;bottom:12px;width:44px;height:44px;border-radius:50%;background:var(--acc);display:grid;place-items:center}
+.spiel svg{width:16px;height:16px;margin-left:3px;fill:#06100f}
+.folge .nr{display:block;margin:14px 0 6px;font:700 11px/1.2 "Montserrat",sans-serif;letter-spacing:.28em;text-transform:uppercase;color:var(--acc)}
+.folge .titel{display:block;font-weight:700;font-size:16px;line-height:1.3}
+.folge .kurz{display:block;margin-top:6px;font-size:14px;line-height:1.45;color:var(--muted)}
+.kanaele{display:flex;flex-wrap:wrap;gap:10px 22px;font-weight:600;font-size:15px}
+.kanaele a{color:var(--acc-l);text-underline-offset:4px}
+.klon{margin-top:18px;font-size:14px}
+
+/* Gespräch */
+.gespraech .feld{background:var(--bg2);border:1px solid var(--hair);border-radius:28px;padding:clamp(26px,5vw,56px)}
+.gespraech h2{margin-top:10px}
+
+/* Fuß */
+.fuss{padding:40px 0 calc(40px + env(safe-area-inset-bottom));border-top:1px solid var(--hair);font-size:14px;color:var(--muted)}
+.fuss .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px 28px;align-items:baseline}
+.fuss .schluss{font-weight:800;font-size:18px;color:var(--text);letter-spacing:-.02em}
+.fuss nav{display:flex;gap:20px}
+.fuss a{color:var(--muted);text-underline-offset:4px}
+
+/* Abspieler */
+dialog.spieler{padding:0;border:0;background:transparent;max-width:none;max-height:none;width:100%;height:100%;margin:0;display:none;place-items:center}
+dialog.spieler[open]{display:grid}
+dialog.spieler::backdrop{background:rgba(5,5,8,.9)}
+dialog.spieler video{display:block;height:min(86vh,calc((100vw - 32px) * 16 / 9));width:auto;aspect-ratio:9/16;max-width:calc(100vw - 32px);border-radius:16px;background:#000}
+dialog.spieler .zu{position:fixed;top:max(14px,env(safe-area-inset-top));right:14px;width:46px;height:46px;border-radius:50%;border:1px solid var(--hair);background:rgba(18,18,24,.9);color:var(--text);font:600 26px/1 "Montserrat",sans-serif;cursor:pointer}
+
+/* Rechtstexte */
+.recht{padding:56px 0 72px}
+.recht h1{font-size:clamp(40px,8vw,64px)}
+.recht h2{font-size:22px;letter-spacing:-.01em;margin:34px 0 10px}
+.recht p,.recht li{max-width:68ch;color:var(--text)}
+.recht .stand{color:var(--muted);font-size:14px}
