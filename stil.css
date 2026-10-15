@@ -76,6 +76,65 @@ h2{font-weight:800;font-size:clamp(32px,5.4vw,52px);line-height:1.02;letter-spac
 .kanaele a{color:var(--acc-l);text-underline-offset:4px}
 .klon{margin-top:18px;font-size:14px}
 
+/* Meine Linie (Swen 15.10.2026) */
+.linie{display:grid;gap:28px;margin-top:34px}
+@media (min-width:900px){.linie{grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);align-items:start;gap:40px}}
+.karte{position:relative;margin:0;aspect-ratio:1/1;max-width:100%;border-radius:24px;overflow:hidden;background:var(--bg);border:1px solid var(--hair)}
+@media (max-width:899px){.karte{aspect-ratio:4/5}}
+@media (min-width:900px){.karte{position:sticky;top:78px}}
+.karte canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.karte .standbild{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .5s ease}
+.karte.bereit .standbild{opacity:0;pointer-events:none}
+.marken{position:absolute;inset:0;pointer-events:none}
+.marke-h{position:absolute;pointer-events:auto;transform:translate(12px,-50%);font:700 12px/1.2 "Montserrat",sans-serif;letter-spacing:.02em;color:var(--text);background:rgba(10,10,14,.74);border:1px solid var(--hair);border-radius:12px;padding:6px 10px;white-space:nowrap;text-align:left;cursor:pointer;transition:border-color .15s ease,color .15s ease}
+.marke-h:hover,.marke-h.an{border-color:var(--acc);color:var(--acc-l)}
+.marke-h.lang{white-space:normal;width:9.6em}
+.marke-h.lage-oben{transform:translate(-50%,calc(-100% - 14px))}
+.marke-h.lage-unten{transform:translate(-50%,14px)}
+.marke-h.lage-links{transform:translate(calc(-100% - 14px),-50%)}
+@media (max-width:599px){.marke-h{font-size:11px;padding:5px 8px}.marke-linie{display:none}
+  .marke-h:not(.kreuzung):not(.ziel){font-size:0;width:32px;height:32px;padding:0;border-radius:50%;transform:translate(-50%,-50%);background:transparent;border:2px solid transparent}
+  .marke-h:not(.kreuzung):not(.ziel).an{border-color:var(--acc-l)}}
+.marke-h.kreuzung,.marke-h.ziel{color:var(--acc-l);border-color:rgba(51,194,182,.45)}
+.marke-h.nebenan{pointer-events:none;color:var(--muted);border-style:dashed}
+.marke-linie{position:absolute;transform:translate(-50%,14px);font:700 11px/1.2 "Montserrat",sans-serif;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);white-space:nowrap;pointer-events:none}
+.ganz{position:absolute;left:14px;top:14px;font:700 13px/1 "Montserrat",sans-serif;color:var(--text);background:rgba(10,10,14,.8);border:1px solid var(--hair);border-radius:999px;padding:10px 14px;min-height:40px;cursor:pointer}
+.ganz:hover{border-color:var(--acc)}
+.karte-info{position:absolute;left:12px;right:12px;bottom:12px;background:rgba(18,18,24,.95);border:1px solid var(--hair);border-radius:16px;padding:14px 16px;font-size:14px;line-height:1.5}
+.karte-info strong{display:block;color:var(--acc-l);margin-bottom:4px}
+.karte-info p{margin:0 0 6px}
+.karte-info a{color:var(--acc-l);font-weight:600;font-size:13px}
+@media (min-width:900px){.karte-info{display:none!important}}
+.legende{min-width:0}
+.lgruppe+.lgruppe{margin-top:34px}
+.lkopf{display:flex;align-items:center;gap:14px}
+.lstrich{width:34px;height:7px;border-radius:4px;background:var(--acc);flex:none}
+.lgruppe h3{margin:0;font-weight:800;font-size:22px;letter-spacing:-.015em;line-height:1.15}
+.lart{display:block;margin-top:3px;font:700 11px/1.2 "Montserrat",sans-serif;letter-spacing:.24em;text-transform:uppercase;color:var(--muted)}
+.etikett{display:block;margin-bottom:2px;font:700 11px/1.2 "Montserrat",sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--acc)}
+.allg{margin:14px 0 0;font-size:15px;color:var(--muted)}
+.bei{margin:10px 0 0;font-size:15px}
+.halte{list-style:none;margin:16px 0 0;padding:0;border-top:1px solid var(--hair)}
+.halte>li{border-bottom:1px solid var(--hair)}
+.halte summary,.verweis{display:flex;align-items:center;gap:12px;min-height:48px;padding:10px 0;cursor:pointer;font-weight:700;font-size:16px;list-style:none}
+.halte summary::-webkit-details-marker{display:none}
+.halte summary::after{content:"+";margin-left:auto;color:var(--muted);font-weight:600;font-size:20px;line-height:1}
+.halte details[open] summary::after{content:"–";color:var(--acc)}
+.halte details[open] summary,.halte details.blitz summary{color:var(--acc-l)}
+.halte summary{transition:color .3s ease}
+.verweis{width:100%;background:none;border:0;color:var(--text);font-family:inherit;text-align:left}
+.verweis .klein{margin-left:auto;font-weight:600;font-size:13px}
+.ring{width:14px;height:14px;border-radius:50%;border:2.5px solid var(--acc);flex:none}
+.ring.kreuzung{width:18px;height:18px;border-width:3.5px}
+.ring.ziel{box-shadow:0 0 0 4px rgba(51,194,182,.22)}
+.rolle{font:700 11px/1 "Montserrat",sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--acc-l);border:1px solid rgba(51,194,182,.4);border-radius:999px;padding:4px 8px}
+.halt-text{padding:0 0 16px 26px}
+.halt-text .allg{margin-top:2px}
+.links{margin:10px 0 0;font-size:15px;font-weight:600}
+.links a{color:var(--acc-l);text-underline-offset:4px}
+.quelle{margin:24px 0 0;font-size:14px;max-width:none}
+.quelle a{color:var(--acc-l)}
+
 /* Gespräch */
 .gespraech .feld{background:var(--bg2);border:1px solid var(--hair);border-radius:28px;padding:clamp(26px,5vw,56px)}
 .gespraech h2{margin-top:10px}

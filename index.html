@@ -27,6 +27,7 @@
   <div class="wrap">
     <a class="marke" href="#">Swen Laempe</a>
     <nav aria-label="Seite">
+      <a class="weit" href="#linie">Linie</a>
       <a class="weit" href="#themen">Themen</a>
       <a href="#montag">Montag<span class="punkt">.</span></a>
       <a href="#gespraech">Gespräch</a>
@@ -63,6 +64,70 @@
     </div>
   </div>
 </section>
+
+<section id="linie" aria-labelledby="linie-titel">
+  <div class="wrap">
+    <div class="kicker">Meine Linie</div>
+    <h2 id="linie-titel">Zwei Linien, eine Kreuzung.</h2>
+    <div class="text"><p>Das Zukunftsinstitut zeichnet elf Megatrends als Liniennetz. Swens Geschäft fährt auf Konnektivität, seine Führung auf Future of Work. Wo sich beide kreuzen, an KI-Empowerment, arbeitet er heute. Tippe eine Haltestelle an.</p></div>
+    <div class="linie">
+      <figure class="karte" id="karte">
+        <img class="standbild" src="bilder/linie.webp" width="1080" height="1080" loading="lazy" alt="Liniennetz: Swens zwei türkise Linien, Konnektivität und Future of Work, kreuzen sich an KI-Empowerment; eine gestrichelte Strecke führt weiter zu AI Leadership.">
+        <canvas aria-hidden="true"></canvas>
+        <div class="marken"></div>
+        <button type="button" class="ganz" hidden>Ganze Linie</button>
+        <div class="karte-info" role="status" hidden></div>
+      </figure>
+      <div class="legende" id="legende">
+        <div class="lgruppe" data-linie="K">
+          <div class="lkopf"><span class="lstrich" aria-hidden="true"></span><div><h3>Konnektivität</h3><span class="lart">Linie des Geschäfts</span></div></div>
+          <p class="allg"><span class="etikett">Allgemein</span>Menschen, Maschinen und Organisationen werden vernetzt.</p>
+          <p class="bei"><span class="etikett">Bei Swen</span>Seit 2001 verbindet Swen mit vioma Hotels mit ihren Gästen.</p>
+          <ul class="halte">
+            <li><details id="halt-pf" data-halt="pf"><summary><span class="ring " aria-hidden="true"></span><span>Plattformökonomie</span></summary><div class="halt-text"><p class="allg"><span class="etikett">Allgemein</span>Märkte laufen über Plattformen, die Anbieter und Kunden zusammenbringen.</p><p class="bei"><span class="etikett">Bei Swen</span>vioma bringt Hotels auf die Wege, über die Gäste buchen. Neu sind KI-Assistenten als Plattform: Ein Agent prüft, wie ein Hotel in den Antworten von ChatGPT und Co. vorkommt, und schlägt vor, was die Website ändern sollte.</p><p class="links"><a href="https://www.vioma.de" target="_blank" rel="noopener">vioma.de</a></p></div></details></li>
+            <li><details id="halt-dd" data-halt="dd"><summary><span class="ring " aria-hidden="true"></span><span>Differentiated Data</span></summary><div class="halt-text"><p class="allg"><span class="etikett">Allgemein</span>Nicht mehr Daten, sondern die richtigen, getrennt nach Zweck, Herkunft und Sensibilität.</p><p class="bei"><span class="etikett">Bei Swen</span>Indicate Data, von Swen mitgegründet, verbindet Datenquellen und liefert Kennzahlen je Haus und Bereich, ohne die Daten verschiedener Kunden zu vermischen. Über eine MCP-Schnittstelle kommen die Kennzahlen direkt in den Chat: Man fragt, der Agent antwortet mit Zahlen.</p><p class="links"><a href="https://indicate-data.com" target="_blank" rel="noopener">indicate-data.com</a></p></div></details></li>
+            <li><details id="halt-dt" data-halt="dt"><summary><span class="ring " aria-hidden="true"></span><span>Digital Twins</span></summary><div class="halt-text"><p class="allg"><span class="etikett">Allgemein</span>Ein digitales Abbild von Gebäuden, Anlagen oder Abläufen, an dem man plant, bevor man baut.</p><p class="bei"><span class="etikett">Bei Swen</span>Für das neue vioma-Quartier in Offenburg entstand aus offenen Gelände- und Gebäudedaten des Landes ein 3D-Modell mit Stellplätzen, Mengen und Prüfliste für die Bauleitung.</p></div></details></li>
+            <li><details id="halt-ia" data-halt="ia"><summary><span class="ring " aria-hidden="true"></span><span>Intelligent Automation</span></summary><div class="halt-text"><p class="allg"><span class="etikett">Allgemein</span>Software erledigt ganze Abläufe, nicht nur einzelne Klicks.</p><p class="bei"><span class="etikett">Bei Swen</span>Bei Swen bauen Agenten Filme in 3D: Drehbuch, gekennzeichneter Stimmklon, Animation in Three.js, Schnitt auf den Takt. Montag. Folge 03 entstand in 86 Minuten. Ein Workflow prüft jeden Morgen die Fristen; wird es eng, leuchtet das Licht in Küche und Wohnzimmer gelb oder rot.</p><p class="links"><a href="https://swenlaempe.github.io/videothek/5486f7eede/" target="_blank" rel="noopener">Folge 03 ansehen</a></p></div></details></li>
+            <li><details id="halt-E" data-halt="E"><summary><span class="ring kreuzung" aria-hidden="true"></span><span>KI-Empowerment</span><span class="rolle">Kreuzung</span></summary><div class="halt-text"><p class="allg"><span class="etikett">Allgemein</span>KI macht Menschen stärker, wenn die Arbeit neu geordnet wird.</p><p class="bei"><span class="etikett">Bei Swen</span>Hier kreuzen sich Swens Linien. Bei vioma lernt das Team nicht im Seminar, sondern indem jede und jeder selbst etwas mit KI liefert.</p></div></details></li>
+            <li><details id="halt-ra" data-halt="ra"><summary><span class="ring " aria-hidden="true"></span><span>Responsible AI</span></summary><div class="halt-text"><p class="allg"><span class="etikett">Allgemein</span>KI nachvollziehbar, fair und sicher einsetzen.</p><p class="bei"><span class="etikett">Bei Swen</span>Jeden Montag um 5 Uhr prüft ein Agent die KI-Assistenten und Workflows im Team auf Datenschutz, etwa offene Schlüssel oder ungesicherte Webhooks. Die Befunde landen in einer Liste fürs Team. Swens Stimmklon ist immer als KI gekennzeichnet.</p></div></details></li>
+          </ul>
+        </div>
+        <div class="lgruppe" data-linie="F">
+          <div class="lkopf"><span class="lstrich" aria-hidden="true"></span><div><h3>Future of Work</h3><span class="lart">Linie der Führung</span></div></div>
+          <p class="allg"><span class="etikett">Allgemein</span>Wie, wo und mit wem wir arbeiten, ordnet sich neu.</p>
+          <p class="bei"><span class="etikett">Bei Swen</span>Seit 30 Jahren führt Swen Menschen.</p>
+          <ul class="halte">
+            <li><details id="halt-H" data-halt="H"><summary><span class="ring " aria-hidden="true"></span><span>Human-to-Human Experience</span></summary><div class="halt-text"><p class="allg"><span class="etikett">Allgemein</span>Je mehr Maschinen erledigen, desto mehr zählt die echte Begegnung.</p><p class="bei"><span class="etikett">Bei Swen</span>Im neuen vioma-Quartier Scheerbünd in Offenburg entstehen Räume für Zusammenarbeit, in die man gern zurückkommt.</p></div></details></li>
+            <li><details id="halt-ta" data-halt="ta"><summary><span class="ring " aria-hidden="true"></span><span>Technosoziale Arbeitswelt</span></summary><div class="halt-text"><p class="allg"><span class="etikett">Allgemein</span>Menschen und Agenten arbeiten im selben Ablauf.</p><p class="bei"><span class="etikett">Bei Swen</span>Jede Aufgabe hat bei Swen einen Namen, Mensch oder Agent. Die Agenten arbeiten, Swen gibt frei. Ein Agent trägt nie die Verantwortung.</p><p class="links"><a href="https://swenlaempe.github.io/videothek/763d1c9cd5/" target="_blank" rel="noopener">Folge 01 ansehen</a></p></div></details></li>
+            <li><button type="button" class="verweis" data-halt="E"><span class="ring kreuzung" aria-hidden="true"></span><span>KI-Empowerment</span><span class="rolle">Kreuzung</span><span class="leise klein">siehe Konnektivität</span></button></li>
+            <li><details id="halt-al" data-halt="al"><summary><span class="ring ziel" aria-hidden="true"></span><span>AI Leadership</span><span class="rolle">Ziel</span></summary><div class="halt-text"><p class="allg"><span class="etikett">Allgemein</span>Führen, wo Menschen und KI zusammenarbeiten.</p><p class="bei"><span class="etikett">Bei Swen</span>Swens nächste Haltestelle: AI-Thought-Leader. Agenten produzieren, Swen verfasst, prüft und verantwortet als Human in the Loop, im Hintergrund.</p><p class="links"><a href="#gespraech">Gespräch anfragen</a></p></div></details></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <p class="quelle leise">Netz nach der Megatrend-Map des Zukunftsinstituts, eigene Darstellung. <a href="https://www.zukunftsinstitut.de/zukunftsthemen/die-megatrend-map" target="_blank" rel="noopener">Zur Megatrend-Map</a>. Diese Karte haben Agenten gebaut. Swen hat sie geprüft und freigegeben.</p>
+  </div>
+</section>
+<script type="application/json" id="linie-daten">{"_hinweis": "Element „Meine Linie“ der Personenseite (Swen 15.10.2026). Linien und Haltestellen-IDs wie in netz.js. Texte über Swen in der dritten Person (Swen: HITL im Hintergrund). Neue Haltestelle: Eintrag anhängen, ID muss in netz.js stehen. rolle: kreuzung | ziel | leer. beruehrt: weitere Haltestellen, die beim Öffnen kurz mit aufleuchten (Linie wird mit hell).", "titel": "Zwei Linien, eine Kreuzung.", "einleitung": "Das Zukunftsinstitut zeichnet elf Megatrends als Liniennetz. Swens Geschäft fährt auf Konnektivität, seine Führung auf Future of Work. Wo sich beide kreuzen, an KI-Empowerment, arbeitet er heute. Tippe eine Haltestelle an.", "quelle": {"text": "Netz nach der Megatrend-Map des Zukunftsinstituts, eigene Darstellung.", "url": "https://www.zukunftsinstitut.de/zukunftsthemen/die-megatrend-map"}, "hitl": "Diese Karte haben Agenten gebaut. Swen hat sie geprüft und freigegeben.", "linien": [{"id": "K", "name": "Konnektivität", "art": "Linie des Geschäfts", "allgemein": "Menschen, Maschinen und Organisationen werden vernetzt.", "bei": "Seit 2001 verbindet Swen mit vioma Hotels mit ihren Gästen.", "halte": [{"id": "pf", "allgemein": "Märkte laufen über Plattformen, die Anbieter und Kunden zusammenbringen.", "bei": "vioma bringt Hotels auf die Wege, über die Gäste buchen. Neu sind KI-Assistenten als Plattform: Ein Agent prüft, wie ein Hotel in den Antworten von ChatGPT und Co. vorkommt, und schlägt vor, was die Website ändern sollte.", "links": [{"text": "vioma.de", "url": "https://www.vioma.de"}]}, {"id": "dd", "allgemein": "Nicht mehr Daten, sondern die richtigen, getrennt nach Zweck, Herkunft und Sensibilität.", "bei": "Indicate Data, von Swen mitgegründet, verbindet Datenquellen und liefert Kennzahlen je Haus und Bereich, ohne die Daten verschiedener Kunden zu vermischen. Über eine MCP-Schnittstelle kommen die Kennzahlen direkt in den Chat: Man fragt, der Agent antwortet mit Zahlen.", "links": [{"text": "indicate-data.com", "url": "https://indicate-data.com"}]}, {"id": "dt", "allgemein": "Ein digitales Abbild von Gebäuden, Anlagen oder Abläufen, an dem man plant, bevor man baut.", "bei": "Für das neue vioma-Quartier in Offenburg entstand aus offenen Gelände- und Gebäudedaten des Landes ein 3D-Modell mit Stellplätzen, Mengen und Prüfliste für die Bauleitung."}, {"id": "ia", "allgemein": "Software erledigt ganze Abläufe, nicht nur einzelne Klicks.", "bei": "Bei Swen bauen Agenten Filme in 3D: Drehbuch, gekennzeichneter Stimmklon, Animation in Three.js, Schnitt auf den Takt. Montag. Folge 03 entstand in 86 Minuten. Ein Workflow prüft jeden Morgen die Fristen; wird es eng, leuchtet das Licht in Küche und Wohnzimmer gelb oder rot.", "links": [{"text": "Folge 03 ansehen", "url": "https://swenlaempe.github.io/videothek/5486f7eede/"}], "beruehrt": ["ed"]}, {"id": "E", "rolle": "kreuzung", "allgemein": "KI macht Menschen stärker, wenn die Arbeit neu geordnet wird.", "bei": "Hier kreuzen sich Swens Linien. Bei vioma lernt das Team nicht im Seminar, sondern indem jede und jeder selbst etwas mit KI liefert."}, {"id": "ra", "allgemein": "KI nachvollziehbar, fair und sicher einsetzen.", "bei": "Jeden Montag um 5 Uhr prüft ein Agent die KI-Assistenten und Workflows im Team auf Datenschutz, etwa offene Schlüssel oder ungesicherte Webhooks. Die Befunde landen in einer Liste fürs Team. Swens Stimmklon ist immer als KI gekennzeichnet."}]}, {"id": "F", "name": "Future of Work", "art": "Linie der Führung", "allgemein": "Wie, wo und mit wem wir arbeiten, ordnet sich neu.", "bei": "Seit 30 Jahren führt Swen Menschen.", "halte": [{"id": "H", "allgemein": "Je mehr Maschinen erledigen, desto mehr zählt die echte Begegnung.", "bei": "Im neuen vioma-Quartier Scheerbünd in Offenburg entstehen Räume für Zusammenarbeit, in die man gern zurückkommt."}, {"id": "ta", "allgemein": "Menschen und Agenten arbeiten im selben Ablauf.", "bei": "Jede Aufgabe hat bei Swen einen Namen, Mensch oder Agent. Die Agenten arbeiten, Swen gibt frei. Ein Agent trägt nie die Verantwortung.", "links": [{"text": "Folge 01 ansehen", "url": "https://swenlaempe.github.io/videothek/763d1c9cd5/"}]}, {"id": "E", "rolle": "kreuzung", "verweis": true}, {"id": "al", "rolle": "ziel", "allgemein": "Führen, wo Menschen und KI zusammenarbeiten.", "bei": "Swens nächste Haltestelle: AI-Thought-Leader. Agenten produzieren, Swen verfasst, prüft und verantwortet als Human in the Loop, im Hintergrund.", "links": [{"text": "Gespräch anfragen", "url": "#gespraech"}]}]}]}</script>
+<script type="module">
+(function () {
+  var figur = document.getElementById("karte");
+  if (!figur || !("IntersectionObserver" in window)) return;
+  var gl = null;
+  try { var c = document.createElement("canvas"); gl = c.getContext("webgl2") || c.getContext("webgl"); } catch (e) {}
+  if (!gl) return;
+  var ruhig = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var standbild = /[?&]standbild\b/.test(location.search);
+  var io = new IntersectionObserver(function (e) {
+    if (!e[0].isIntersecting) return;
+    io.disconnect();
+    import("./linie.js").then(function (m) {
+      m.start({ figur: figur, legende: document.getElementById("legende"), daten: JSON.parse(document.getElementById("linie-daten").textContent), ruhig: ruhig || standbild, standbild: standbild });
+    }).catch(function () {});
+  }, { rootMargin: "200px 0px", threshold: 0.01 });
+  io.observe(figur);
+})();
+</script>
 
 <section id="themen" aria-labelledby="themen-titel">
   <div class="wrap">
