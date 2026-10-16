@@ -24,7 +24,7 @@ img{display:block;max-width:100%;height:auto}
 .kopf nav{display:flex;gap:18px;font-size:14px;font-weight:600}
 .kopf nav a{text-decoration:none;color:var(--muted)}
 .kopf nav a:hover{color:var(--text)}
-@media (max-width:420px){.kopf nav{gap:12px;font-size:13px}.kopf nav .weit{display:none}.eingang .kicker{letter-spacing:.18em;font-size:11px}}
+@media (max-width:420px){.kopf nav{gap:10px;font-size:13px}.kopf nav .weit{display:none}.eingang .kicker{letter-spacing:.18em;font-size:11px}}
 
 /* Eingang */
 .eingang{position:relative;padding:56px 0 64px}
@@ -159,3 +159,20 @@ dialog.spieler .zu{position:fixed;top:max(14px,env(safe-area-inset-top));right:1
 .recht h2{font-size:22px;letter-spacing:-.01em;margin:34px 0 10px}
 .recht p,.recht li{max-width:68ch;color:var(--text)}
 .recht .stand{color:var(--muted);font-size:14px}
+
+/* Kipppunkt. (seit 16.10.2026): Ereignisse außer der Reihe als Leiste mit Datum, Endbild links, Bedeutung und Fazit rechts */
+.kipppunkte{list-style:none;margin:34px 0 26px;padding:0 0 0 30px;position:relative;display:grid;gap:34px}
+.kipppunkte::before{content:"";position:absolute;left:6px;top:8px;bottom:8px;width:2px;background:linear-gradient(var(--acc),rgba(51,194,182,.08))}
+.kp{position:relative}
+.kp::before{content:"";position:absolute;left:-30px;top:2px;width:14px;height:14px;border-radius:50%;background:var(--acc)}
+.kp-karte{display:grid;grid-template-columns:minmax(0,180px) minmax(0,1fr);gap:clamp(16px,3vw,32px);align-items:start;text-decoration:none;color:inherit}
+.kp .rahmen{position:relative;display:block;border-radius:16px;overflow:hidden;border:1px solid var(--hair);background:#000;transition:border-color .15s ease,transform .15s ease}
+.kp a:hover .rahmen{border-color:var(--acc);transform:translateY(-2px)}
+.kp img{display:block;width:100%;aspect-ratio:9/16;object-fit:cover}
+.kp-text{display:block;min-width:0;max-width:52ch}
+.kp .nr{display:block;margin:0 0 8px;font:700 11px/1.2 "Montserrat",sans-serif;letter-spacing:.28em;text-transform:uppercase;color:var(--acc)}
+.kp .titel{display:block;margin:0 0 18px;font-weight:800;font-size:clamp(20px,2.6vw,28px);line-height:1.15;letter-spacing:-.02em;text-wrap:balance}
+.kp .kurz{display:block;margin:0 0 16px;font-size:15px;line-height:1.5;color:var(--muted)}
+.kp .fazit{display:block;font-weight:700;font-size:clamp(16px,1.9vw,19px);line-height:1.42}
+@media (max-width:520px){.kp-karte{grid-template-columns:minmax(0,110px) minmax(0,1fr)}.kipppunkte{padding-left:24px}.kp::before{left:-24px;width:12px;height:12px}.kipppunkte::before{left:5px}}
+.claim{margin:-8px 0 18px;font-weight:700;font-size:clamp(18px,2.2vw,22px);line-height:1.35;color:var(--acc-l);max-width:40ch}
