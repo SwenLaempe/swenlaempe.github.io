@@ -72,8 +72,10 @@ h2{font-weight:800;font-size:clamp(32px,5.4vw,52px);line-height:1.02;letter-spac
 .folge .nr{display:block;margin:14px 0 6px;font:700 11px/1.2 "Montserrat",sans-serif;letter-spacing:.28em;text-transform:uppercase;color:var(--acc)}
 .folge .titel{display:block;font-weight:700;font-size:16px;line-height:1.3}
 .folge .kurz{display:block;margin-top:6px;font-size:14px;line-height:1.45;color:var(--muted)}
-.kanaele{display:flex;flex-wrap:wrap;gap:10px 22px;font-weight:600;font-size:15px}
-.kanaele a{color:var(--acc-l);text-underline-offset:4px}
+.kanaele{display:flex;flex-wrap:wrap;gap:10px;font-weight:600;font-size:15px}
+.kanaele a{display:inline-flex;align-items:center;gap:9px;min-height:44px;padding:8px 17px 8px 14px;border:1px solid var(--hair);border-radius:999px;text-decoration:none;color:var(--text);transition:border-color .15s ease}
+.kanaele a:hover{border-color:var(--acc)}
+.kanaele svg{width:18px;height:18px;flex:none;fill:var(--acc-l)}
 .klon{margin-top:18px;font-size:14px}
 
 /* Meine Linie (Swen 15.10.2026) */
@@ -141,9 +143,13 @@ h2{font-weight:800;font-size:clamp(32px,5.4vw,52px);line-height:1.02;letter-spac
 
 /* Fuß */
 .fuss{padding:40px 0 calc(40px + env(safe-area-inset-bottom));border-top:1px solid var(--hair);font-size:14px;color:var(--muted)}
-.fuss .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px 28px;align-items:baseline}
+.fuss .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px 28px;align-items:center}
 .fuss .schluss{font-weight:800;font-size:18px;color:var(--text);letter-spacing:-.02em}
 .fuss nav{display:flex;gap:20px}
+.fuss .profile{display:flex;gap:4px;margin:0 -10px}
+.fuss .profile a{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;color:var(--muted);transition:color .15s ease}
+.fuss .profile a:hover{color:var(--acc-l)}
+.fuss .profile svg{width:19px;height:19px;fill:currentColor}
 .fuss a{color:var(--muted);text-underline-offset:4px}
 
 /* Abspieler */
