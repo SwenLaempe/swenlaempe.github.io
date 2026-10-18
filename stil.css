@@ -67,8 +67,10 @@ h2{font-weight:800;font-size:clamp(32px,5.4vw,52px);line-height:1.02;letter-spac
 .thema p:last-child{margin:0;color:var(--muted)}
 
 /* Folgen */
-.folgen{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin:34px 0 30px;padding:0;list-style:none}
-@media (min-width:760px){.folgen{grid-template-columns:repeat(4,minmax(0,1fr));gap:22px}}
+.folgen{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:36px 18px;margin:34px 0 30px;padding:0;list-style:none}
+@media (min-width:760px){.folgen{grid-template-columns:repeat(4,minmax(0,1fr));gap:48px 22px}}
+/* Hilfslinie (Swen 18.10.2026): jede Karte endet mit einer Haarlinie, die Zeile streckt alle Karten auf gleiche Höhe, die Linien fluchten */
+.folge{padding-bottom:20px;border-bottom:1px solid var(--hair)}
 .folge a{display:block;text-decoration:none}
 .folge .rahmen{position:relative;display:block;border-radius:16px;overflow:hidden;border:1px solid var(--hair);background:#000;transition:border-color .15s ease,transform .15s ease}
 .folge a:hover .rahmen{border-color:var(--acc);transform:translateY(-2px)}
