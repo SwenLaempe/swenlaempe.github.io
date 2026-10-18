@@ -188,4 +188,25 @@ dialog.spieler .zu{position:fixed;top:max(14px,env(safe-area-inset-top));right:1
 .kp .kurz{display:block;margin:0 0 16px;font-size:15px;line-height:1.5;color:var(--muted)}
 .kp .fazit{display:block;font-weight:700;font-size:clamp(16px,1.9vw,19px);line-height:1.42}
 @media (max-width:520px){.kp-karte{grid-template-columns:minmax(0,110px) minmax(0,1fr)}.kipppunkte{padding-left:24px}.kp::before{left:-24px;width:12px;height:12px}.kipppunkte::before{left:5px}}
+/* Folgenseiten (seit 18.10.2026): je Folge und Kipppunkt eine Seite mit Film und Abschrift, damit Suchmaschinen und Agenten den Inhalt lesen können */
+.episode{padding:48px 0 72px}
+.episode h1{font-size:clamp(34px,6.4vw,58px);line-height:1.02;margin:14px 0 16px;text-wrap:balance}
+.episode .lead{max-width:46ch;color:var(--muted)}
+.ep-grid{display:grid;gap:32px;margin-top:8px}
+@media (min-width:820px){.ep-grid{grid-template-columns:minmax(0,320px) minmax(0,1fr);gap:56px;align-items:start}.ep-film{position:sticky;top:78px}}
+.ep-film{margin:0;width:min(100%,320px)}
+.ep-film video{display:block;width:100%;aspect-ratio:9/16;border-radius:16px;border:1px solid var(--hair);background:#000}
+.ep-film figcaption{margin-top:12px;font-size:13px}
+.ep-text{min-width:0;max-width:62ch}
+.ep-text h2{font-size:22px;letter-spacing:-.01em;margin:0 0 14px}
+.ep-text h2:not(:first-child){margin-top:36px}
+.abschrift p{margin:0 0 14px}
+.ep-fazit{margin:0 0 8px;font-weight:700;font-size:clamp(17px,2vw,19px);line-height:1.42}
+.auftrag{white-space:pre-wrap;overflow-wrap:anywhere;margin:0 0 14px;padding:18px 20px;font:500 15px/1.55 "Montserrat",sans-serif;background:var(--bg2);border:1px solid var(--hair);border-radius:16px}
+button.knopf{background:transparent;font-family:inherit;cursor:pointer}
+.ep-quelle{font-size:14px}
+.ep-quelle a,.ep-weiter a{color:var(--acc-l);text-underline-offset:4px}
+.ep-weiter{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 24px;margin-top:56px;padding-top:24px;border-top:1px solid var(--hair);font-weight:600;font-size:15px}
+.ep-weiter a{text-decoration:none}
+.ep-weiter a:hover{text-decoration:underline}
 .claim{margin:-8px 0 18px;font-weight:700;font-size:clamp(18px,2.2vw,22px);line-height:1.35;color:var(--acc-l);max-width:40ch}

@@ -1,0 +1,43 @@
+# Swen Laempe
+
+> Unternehmer seit 30 Jahren. Themen: KI, Struktur, unternehmerische Kultur und Beratung. Botschaft: KI wirkt nur so gut wie die Struktur und die Kultur, auf der sie läuft. Die Verantwortung bleibt beim Menschen.
+
+Swen Laempe hat die vioma aufgebaut, ein Unternehmen für Hotel-Websites und Buchungssysteme (https://www.vioma.de), und Indicate Data mitgegründet, das Datenquellen verbindet und Kennzahlen je Haus und Bereich liefert, über eine MCP-Schnittstelle auch direkt im Chat (https://indicate-data.com). Er arbeitet mit einem eigenen KI-Arbeitssystem: Agenten recherchieren, entwerfen und produzieren, er entscheidet und steht dafür gerade. So entstehen auch seine Filme; die Stimme darin ist ein gekennzeichneter KI-Klon von ihm. Jede Folge hat eine eigene Seite mit Film und vollständiger Abschrift.
+
+## Montag.
+
+Ein Gedanke zu KI, Struktur und Kultur, in gut einer Minute, und ein Schritt für deinen Montag, damit du anfängst statt aufzuschieben.
+
+- [Folge 06: Trendradar für deinen Betrieb.](https://swenlaempe.github.io/montag/06/): Fünf Sätze über deinen Betrieb, elf Megatrends, und zu jedem Treffer das stärkste Gegenargument.
+- [Folge 05: Meine Linie.](https://swenlaempe.github.io/montag/05/): Konnektivität und Führung kreuzen sich bei KI-Empowerment. Je mehr die Maschine erledigt, desto mehr zählt der Ort, an dem Menschen sich begegnen.
+- [Folge 04: Welche Linie fährt durch deinen Beruf?](https://swenlaempe.github.io/montag/04/): Megatrends als Liniennetz. KI wirkt an den Kreuzungen mit Arbeit, Lernen und Menschen.
+- [Folge 03: Tempo braucht Struktur.](https://swenlaempe.github.io/montag/03/): Eine Grafikkarte ist schnell, weil Tausende Kerne geordnet zusammenarbeiten.
+- [Folge 02: Warten ist auch eine Entscheidung.](https://swenlaempe.github.io/montag/02/): Die Frage nach der eigenen Arbeit ist alt. Lernen fängt an einer echten Aufgabe an.
+- [Folge 01: Ein Agent trägt nie die Verantwortung.](https://swenlaempe.github.io/montag/01/): Bevor ein Agent eine Aufgabe übernimmt, steht fest, wer dafür geradesteht.
+
+## Kipppunkt.
+
+Ein Ereignis, nach dem in der KI-Welt etwas anders ist als vorher: was passiert ist, was es bedeutet, Fazit.
+
+- [Oktober 2026: REA: KI baut fertige Programme nach.](https://swenlaempe.github.io/kipppunkt/2026-10-rea/): Was ein Programm tut, kann eine KI nachbauen. Der Aufwand schützt nicht mehr, nur noch das Recht. Fazit: Programme werden leichter ersetzbar. Was zählt, sind deine Daten, deine Abläufe und ein Mensch, der für das Ergebnis geradesteht.
+
+## Haltung
+
+- KI: Ein Agent trägt nie die Verantwortung. Agenten arbeiten zu. Entscheiden tut ein Mensch mit Namen, und wo er eingreift, steht vorher fest.
+- Struktur: Struktur schlägt Tempo. Wer KI auf alte Abläufe setzt, wird nicht schneller. Erst der neu gebaute Ablauf macht das Tempo nutzbar.
+- Unternehmerische Kultur: Kultur ist das soziale Betriebssystem. KI läuft nur so gut wie die Kultur, auf der sie läuft. Angst sinkt durch eigenes Tun, nicht durch Vorträge.
+- Beratung: Mensch vorne, KI drumherum. Ich frage zuerst, was in deinem Betrieb nur ein Mensch tun sollte. Für alles andere suchen wir den Platz der KI.
+
+## Kontakt
+
+- [Gespräch anfragen](https://swenlaempe.github.io/#gespraech): E-Mail an swen.laempe@gmail.com, in zwei Sätzen, wo du stehst
+- [WhatsApp-Kanal](https://whatsapp.com/channel/0029Vb9DDne59PwTsIBrQ00l)
+- [LinkedIn](https://www.linkedin.com/in/swen-laempe-a66a0376/)
+- [Instagram](https://www.instagram.com/swenlaempe/)
+- [Facebook](https://www.facebook.com/swen.laempe/)
+- [YouTube](https://www.youtube.com/@swenlaempe)
+
+## Optional
+
+- [Meine Linie](https://swenlaempe.github.io/#linie): Swens Geschäft und Führung als zwei Linien im Megatrend-Netz des Zukunftsinstituts, Kreuzung KI-Empowerment
+- [Impressum](https://swenlaempe.github.io/impressum.html)
