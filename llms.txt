@@ -19,6 +19,7 @@ Ein Gedanke zu KI, Struktur und Kultur, in gut einer Minute, und ein Schritt fü
 
 Ein Ereignis, nach dem in der KI-Welt etwas anders ist als vorher: was passiert ist, was es bedeutet, Fazit.
 
+- [Oktober 2026: Tesla Roadster: Lenken wird Signal.](https://swenlaempe.github.io/kipppunkt/2026-10-roadster/): Lenken wird zum Signal, das eine Maschine geben kann. Wer sie einschaltet, bleibt der Fahrer. Fazit: Lenken kann die Maschine. Führen bleibt bei dir. Wer Ziel und Grenzen nicht selbst setzt, lässt den Hersteller führen.
 - [Oktober 2026: REA: KI baut fertige Programme nach.](https://swenlaempe.github.io/kipppunkt/2026-10-rea/): Was ein Programm tut, kann eine KI nachbauen. Der Aufwand schützt nicht mehr, nur noch das Recht. Fazit: Programme werden leichter ersetzbar. Was zählt, sind deine Daten, deine Abläufe und ein Mensch, der für das Ergebnis geradesteht.
 
 ## Haltung
