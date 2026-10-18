@@ -28,6 +28,8 @@ img{display:block;max-width:100%;height:auto}
 @media (max-width:560px){.kopf .wrap{flex-wrap:wrap;height:auto;row-gap:4px;padding-top:10px;padding-bottom:8px}.kopf nav{width:100%;flex-wrap:wrap;justify-content:space-between;gap:2px 8px;font-size:13px}html{scroll-padding-top:84px}}
 /* unter 360 px bricht die Navigation in eine dritte Zeile, der Kopf wird höher */
 @media (max-width:359px){html{scroll-padding-top:108px}}
+/* mit sechs Punkten (Tandem. sichtbar) passt unter 420 px keine Zeile mehr: zwei Zeilen zu je drei */
+@media (max-width:419px){.kopf nav:has(>a:nth-child(6)){display:grid;grid-template-columns:repeat(3,auto);justify-content:space-between}html:has(.kopf nav>a:nth-child(6)){scroll-padding-top:108px}}
 @media (max-width:420px){.eingang .kicker{letter-spacing:.18em;font-size:11px}}
 
 /* Eingang */
