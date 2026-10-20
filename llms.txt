@@ -22,6 +22,12 @@ Ein Ereignis, nach dem in der KI-Welt etwas anders ist als vorher: was passiert 
 - [Oktober 2026: Tesla Roadster: Lenken wird Signal.](https://swenlaempe.github.io/kipppunkt/2026-10-roadster/): Lenken wird zum Signal, das eine Maschine geben kann. Wer sie einschaltet, bleibt der Fahrer. Fazit: Lenken kann die Maschine. Führen bleibt bei dir. Wer Ziel und Grenzen nicht selbst setzt, lässt den Hersteller führen.
 - [Oktober 2026: REA: KI baut fertige Programme nach.](https://swenlaempe.github.io/kipppunkt/2026-10-rea/): Was ein Programm tut, kann eine KI nachbauen. Der Aufwand schützt nicht mehr, nur noch das Recht. Fazit: Programme werden leichter ersetzbar. Was zählt, sind deine Daten, deine Abläufe und ein Mensch, der für das Ergebnis geradesteht.
 
+## Tandem.
+
+Der agentische Podcast: Mein KI-Klon fragt, Menschen antworten. Ich verantworte jedes Gespräch. Die Fragen stellt ein KI-Klon von mir. Jeder Gast gibt seine Folge frei, bevor sie erscheint.
+
+- [Folge 01: Mein KI-Klon fragt, Johannes Lemminger antwortet](https://swenlaempe.github.io/tandem/01/): Steuerberater, Autor und Podcaster. Drei Fragen: Wie kam es zu seinem Bestseller „DU!“? Was macht KI mit einer Kanzlei? Welchen Rat gibt er uns für den Wandel?
+
 ## Haltung
 
 - KI: Ein Agent trägt nie die Verantwortung. Agenten arbeiten zu. Entscheiden tut ein Mensch mit Namen, und wo er eingreift, steht vorher fest.
