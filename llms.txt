@@ -8,9 +8,10 @@ Swen Laempe hat die vioma GmbH gegründet und aufgebaut, ein Unternehmen für Ho
 
 Ein Gedanke zu KI, Struktur und Kultur, in gut einer Minute, und ein Schritt für deinen Montag, damit du anfängst statt aufzuschieben.
 
-- [Folge 06: Trendradar für deinen Betrieb.](https://swenlaempe.github.io/montag/06/): Fünf Sätze über deinen Betrieb, elf Megatrends, und zu jedem Treffer das stärkste Gegenargument.
-- [Folge 05: Meine Linie.](https://swenlaempe.github.io/montag/05/): Konnektivität und Führung kreuzen sich bei KI-Empowerment. Je mehr die Maschine erledigt, desto mehr zählt der Ort, an dem Menschen sich begegnen.
-- [Folge 04: Welche Linie fährt durch deinen Beruf?](https://swenlaempe.github.io/montag/04/): Megatrends als Liniennetz. KI wirkt an den Kreuzungen mit Arbeit, Lernen und Menschen.
+- [Folge 07: Trendradar für deinen Betrieb.](https://swenlaempe.github.io/montag/07/): Fünf Sätze über deinen Betrieb, elf Megatrends, und zu jedem Treffer das stärkste Gegenargument.
+- [Folge 06: Meine Linie.](https://swenlaempe.github.io/montag/06/): Konnektivität und Führung kreuzen sich bei KI-Empowerment. Je mehr die Maschine erledigt, desto mehr zählt der Ort, an dem Menschen sich begegnen.
+- [Folge 05: Welche Linie fährt durch deinen Beruf?](https://swenlaempe.github.io/montag/05/): Megatrends als Liniennetz. KI wirkt an den Kreuzungen mit Arbeit, Lernen und Menschen.
+- [Folge 04: Wer schließt die Lücke?](https://swenlaempe.github.io/montag/04/): Eine Lücke von 2012 unter Millionen Websites, gefunden mit KI. Entscheidend war danach, wer updatet und wer abschaltet.
 - [Folge 03: Tempo braucht Struktur.](https://swenlaempe.github.io/montag/03/): Eine Grafikkarte ist schnell, weil Tausende Kerne geordnet zusammenarbeiten.
 - [Folge 02: Warten ist auch eine Entscheidung.](https://swenlaempe.github.io/montag/02/): Die Frage nach der eigenen Arbeit ist alt. Lernen fängt an einer echten Aufgabe an.
 - [Folge 01: Ein Agent trägt nie die Verantwortung.](https://swenlaempe.github.io/montag/01/): Bevor ein Agent eine Aufgabe übernimmt, steht fest, wer dafür geradesteht.
