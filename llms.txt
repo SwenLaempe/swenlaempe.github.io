@@ -28,6 +28,7 @@ Ein Ereignis, nach dem in der KI-Welt etwas anders ist als vorher: was passiert 
 Der agentische Podcast: Mein KI-Klon fragt, Menschen antworten. Ich verantworte jedes Gespräch. Die Fragen stellt ein KI-Klon von mir. Jeder Gast gibt seine Folge frei, bevor sie erscheint.
 
 - [Folge 01: Mein KI-Klon fragt, Johannes Lemminger antwortet](https://swenlaempe.github.io/tandem/01/): Steuerberater, Autor und Podcaster. Drei Fragen: Wie kam es zu seinem Bestseller „DU!“? Was macht KI mit einer Kanzlei? Welchen Rat gibt er uns für den Wandel?
+- [Folge 02: Mein KI-Klon fragt, Gerald Sandu antwortet](https://swenlaempe.github.io/tandem/02/): Geschäftsführer der vioma GmbH in Offenburg, Software für Hotels. Drei Fragen: Was soll ein NVIDIA DGX Spark als neuer Kollege tun? Was steckt aus der Handball-Bundesliga heute in der vioma? Und was empfiehlt er anderen Geschäftsführern?
 
 ## Haltung
 
