@@ -8,6 +8,7 @@ Swen Laempe hat die vioma GmbH gegründet und aufgebaut, ein Unternehmen für Ho
 
 Ein Gedanke zu KI, Struktur und Kultur, dazu ein Schritt für deinen Montag, damit du anfängst statt aufzuschieben.
 
+- [Folge 07: Dein Wissen gehört nicht dem Werkzeug.](https://swenlaempe.github.io/montag/07/): Um jede KI wird etwas gebaut: Anweisungen, Wissen, Werkzeuge, Prüfungen. Die KI wechselt, deine Regeln nimmst du mit.
 - [Folge 06: Meine Linie.](https://swenlaempe.github.io/montag/06/): Konnektivität und Führung kreuzen sich bei KI-Empowerment. Je mehr die Maschine erledigt, desto mehr zählt der Ort, an dem Menschen sich begegnen.
 - [Folge 05: Welche Linie fährt durch deinen Beruf?](https://swenlaempe.github.io/montag/05/): Megatrends als Liniennetz. KI wirkt an den Kreuzungen mit Arbeit, Lernen und Menschen.
 - [Folge 04: Wer schließt die Lücke?](https://swenlaempe.github.io/montag/04/): Eine Lücke von 2012 unter Millionen Websites, gefunden mit KI. Entscheidend war danach, wer updatet und wer abschaltet.
