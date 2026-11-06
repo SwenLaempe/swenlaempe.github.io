@@ -29,6 +29,7 @@ Der agentische Podcast: Mein KI-Klon fragt, Menschen antworten. Ich verantworte 
 
 - [Folge 01: Mein KI-Klon fragt, Johannes Lemminger antwortet](https://swenlaempe.github.io/tandem/01/): Steuerberater, Autor und Podcaster. Drei Fragen: Wie kam es zu seinem Bestseller „DU!“? Was macht KI mit einer Kanzlei? Welchen Rat gibt er uns für den Wandel?
 - [Folge 02: Mein KI-Klon fragt, Gerald Sandu antwortet](https://swenlaempe.github.io/tandem/02/): Geschäftsführer der vioma GmbH in Offenburg, Software für Hotels. Drei Fragen: Was soll ein NVIDIA DGX Spark als neuer Kollege tun? Was steckt aus der Handball-Bundesliga heute in der vioma? Und was empfiehlt er anderen Geschäftsführern?
+- [Folge 03: Mein KI-Klon fragt, Julie Lenz antwortet](https://swenlaempe.github.io/tandem/03/): Studentin der Psychologie, interessiert sich besonders für die Arbeits- und Organisationspsychologie. Vier Fragen: Was bringt eine Mitarbeiterbefragung am Ende wirklich? Liefern oder erst hinterfragen? Wie setzt man als Unternehmer den richtigen Impuls? Und was sollte man bei der Einführung von KI unbedingt beachten?
 
 ## Haltung
 
