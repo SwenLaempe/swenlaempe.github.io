@@ -20,6 +20,7 @@ Ein Gedanke zu KI, Struktur und Kultur, dazu ein Schritt für deinen Montag, dam
 
 Ein Ereignis, nach dem in der KI-Welt etwas anders ist als vorher: was passiert ist, was es bedeutet, Fazit.
 
+- [November 2026: Hotelbuchung: Der Gast schickt seinen Agenten.](https://swenlaempe.github.io/kipppunkt/2026-11-agenten/): Dann entscheidet bei jeder fünften Buchung ein Agent, was der Gast überhaupt zu sehen bekommt. Fazit: Bald sieht der Gast nur, was sein Agent ihm meldet.
 - [Oktober 2026: Tesla Roadster: Lenken wird Signal.](https://swenlaempe.github.io/kipppunkt/2026-10-roadster/): Lenken wird zum Signal, das eine Maschine geben kann. Wer sie einschaltet, bleibt der Fahrer. Fazit: Lenken kann die Maschine. Führen bleibt bei dir. Wer Ziel und Grenzen nicht selbst setzt, lässt den Hersteller führen.
 - [Oktober 2026: REA: KI baut fertige Programme nach.](https://swenlaempe.github.io/kipppunkt/2026-10-rea/): Was ein Programm tut, kann eine KI nachbauen. Der Aufwand schützt nicht mehr, nur noch das Recht. Fazit: Programme werden leichter ersetzbar. Was zählt, sind deine Daten, deine Abläufe und ein Mensch, der für das Ergebnis geradesteht.
 
