@@ -1,0 +1,740 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<meta name="description" content="Filme und Erklärungen zu Swen Laempes KI-Arbeitssystem, dazu ein Starterkit zum Kopieren. KI-Live beim MASTERCLUB Salescamp, 13.11.2026.">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<style>body{margin:0}</style>
+<title>KI-Live Salescamp</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<style>
+/* Layout: Amtsblatt im Bühnenformat. Je Abschnitt ein Bild, Film links, Erklärung rechts, Hairlines statt Kästen. Papier bleibt Papier (swen-os/DESIGN.md), deshalb ein Thema. */
+:root {
+  --grund: #ffffff; --tinte: #221b18; --grau: #5c544f; --linie: #d8d0ca; --linie-licht: #eee7e1; --hinweis: #f7f1ec; --siegel: #0e6b6b; --kino: rgba(34, 27, 24, .94); --kino-text: #ffffff;
+  --serif: Charter, "Bitstream Charter", Georgia, serif;
+  --sans: "Avenir Next", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --mono: Menlo, ui-monospace, monospace;
+  --t-display: clamp(32px, 4.4vw, 76px);
+  --t-headline: clamp(25px, 2.9vw, 48px);
+  --t-kern: clamp(18px, 1.75vw, 30px);
+  --t-body: clamp(15px, 1.2vw, 21px);
+  --t-klein: clamp(12.5px, .95vw, 16px);
+  --t-label: clamp(11px, .8vw, 14px);
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body { background: var(--grund); color: var(--tinte); font: 400 var(--t-body)/1.5 var(--sans); padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.blatt { max-width: min(100%, 1800px); margin-inline: auto; }
+h1, h2, h3 { font-family: var(--serif); font-weight: 700; text-wrap: balance; margin: 0; }
+h1 { font-size: var(--t-display); line-height: 1.1; letter-spacing: -.01em; }
+h2 { font-size: var(--t-headline); line-height: 1.15; }
+h3 { font-size: var(--t-kern); line-height: 1.2; }
+p { margin: 0; max-width: 62ch; }
+a { color: var(--siegel); }
+button { font: inherit; color: inherit; cursor: pointer; }
+:focus-visible { outline: 2px solid var(--siegel); outline-offset: 2px; }
+.kicker { font-size: var(--t-label); font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--siegel); }
+.titel { font-size: var(--t-label); font-weight: 700; letter-spacing: .13em; text-transform: uppercase; display: flex; gap: .7em; align-items: baseline; }
+.ziffer { font-family: var(--serif); color: var(--siegel); font-size: 1.5em; font-weight: 700; letter-spacing: 0; font-variant-numeric: tabular-nums; }
+.kern { font-family: var(--serif); font-size: var(--t-kern); line-height: 1.32; }
+.meta { color: var(--grau); font-size: var(--t-klein); }
+
+.bild { display: grid; gap: clamp(20px, 3vw, 60px); padding-block: clamp(36px, 5vh, 72px); border-top: 1px solid var(--linie); scroll-margin-top: 0; }
+.bild > * { min-width: 0; }
+.bild:first-child { border-top: 0; }
+.text { display: grid; gap: clamp(12px, 1.4vw, 24px); align-content: center; }
+.text > * { min-width: 0; }
+@media (min-width: 1000px) and (min-height: 540px) {
+  .bild { min-height: 100vh; min-height: 100dvh; grid-template-columns: minmax(0, 2.25fr) minmax(0, 1fr); align-items: center; padding-block: clamp(28px, 4vh, 56px) clamp(56px, 7vh, 80px); }
+  .bild.hoch { grid-template-columns: auto minmax(0, 1fr); }
+  .bild.voll { grid-template-columns: minmax(0, 1fr); align-content: center; }
+  .bild.kopf { grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); grid-template-rows: auto 1fr; }
+  .film.quer { max-width: calc(80vh * 16 / 9); justify-self: end; width: 100%; }
+  .film.hoch { height: 84vh; width: calc(84vh * 9 / 16); }
+}
+
+.film { position: relative; background: var(--hinweis); }
+.film.quer { aspect-ratio: 16 / 9; }
+.film.hoch { aspect-ratio: 9 / 16; max-width: 100%; }
+@media (max-width: 999px), (max-height: 539px) { .film.hoch { width: min(100%, 62vh); justify-self: center; } }
+.film video { position: absolute; inset: 0; display: block; width: 100%; height: 100%; object-fit: contain; background: var(--hinweis); }
+.spiel { position: absolute; inset: 0; margin: auto; width: fit-content; height: fit-content; padding: .55em 1.2em; background: var(--grund); color: var(--tinte); border: 1px solid var(--tinte); font-weight: 600; font-size: var(--t-body); }
+.spiel:hover { background: var(--tinte); color: var(--grund); }
+.stand { position: absolute; left: .7em; top: .55em; font-size: var(--t-klein); font-variant-numeric: tabular-nums; color: var(--tinte); background: var(--grund); padding: .1em .5em; }
+
+.inhalt { list-style: none; margin: 0; padding: 0; display: grid; align-content: center; }
+.inhalt li { border-top: 1px solid var(--linie-licht); }
+.inhalt li:first-child { border-top: 0; }
+.inhalt a { display: flex; gap: .8em; align-items: baseline; padding: .55em 0; color: var(--tinte); text-decoration: none; font-size: var(--t-body); }
+.inhalt a:hover { color: var(--siegel); }
+.nur-buehne { display: none; }
+@media (min-width: 1000px) { .nur-buehne { display: block; } }
+#vorladen { background: none; border: 1px solid var(--tinte); padding: .4em .9em; font-weight: 600; font-size: var(--t-klein); margin-right: .8em; }
+#vorladen:hover { background: var(--tinte); color: var(--grund); }
+#vorladen[disabled] { opacity: .55; cursor: default; background: none; color: var(--tinte); }
+.tasten { margin-top: .6em; color: var(--grau); font-size: var(--t-klein); }
+
+.klein { margin: 0; display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: .3em 1em; font-size: var(--t-klein); padding-top: clamp(10px, 1vw, 18px); border-top: 1px solid var(--linie-licht); }
+.klein dt { font-weight: 700; }
+.klein dd { margin: 0; color: var(--grau); }
+
+#netz-flaeche { position: relative; aspect-ratio: 16 / 10; overflow: hidden; touch-action: pan-y; cursor: grab; }
+#netz-flaeche:active { cursor: grabbing; }
+#netz-cv { display: block; width: 100%; height: 100%; }
+.netz-marke { position: absolute; left: 0; top: 0; pointer-events: none; font-size: var(--t-klein); font-weight: 600; white-space: nowrap; display: flex; gap: .4em; align-items: center; opacity: 0; background: rgba(255, 255, 255, .78); padding: 0 .3em; }
+.netz-marke i, .legende i { width: .62em; height: .62em; border-radius: 50%; display: inline-block; flex: none; }
+.netz-marke b { font-weight: 400; color: var(--grau); font-variant-numeric: tabular-nums; }
+@media (max-width: 700px) { .netz-marke { display: none; } }
+.legende { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .2em 1em; font-size: var(--t-klein); }
+.legende li { display: flex; gap: .45em; align-items: center; }
+.legende b { font-weight: 400; color: var(--grau); margin-left: auto; font-variant-numeric: tabular-nums; }
+#neu-sortieren { justify-self: start; background: none; border: 0; border-bottom: 1px solid var(--tinte); padding: 0; font-size: var(--t-klein); font-weight: 600; }
+
+.woerter { margin: 0; display: grid; gap: clamp(14px, 1.7vw, 30px); }
+.woerter > div { display: grid; gap: .25em; border-top: 1px solid var(--linie-licht); padding-top: clamp(10px, 1.1vw, 20px); }
+.woerter > div:first-child { border-top: 0; padding-top: 0; }
+.woerter dt { font-family: var(--serif); font-weight: 700; font-size: var(--t-kern); }
+.woerter dd { margin: 0; max-width: 56ch; }
+
+/* Wand: jede Kachel in ihrem echten Format (16:9 oder 9:16), Breite im Verhältnis des Formats, damit alle Bilder einer Reihe gleich hoch sind. */
+.wand { display: grid; gap: clamp(18px, 2.2vw, 40px); }
+.reihe { display: flex; gap: clamp(14px, 1.6vw, 30px); align-items: start; }
+.kachel { flex: var(--ar) 1 0; min-width: 0; background: none; border: 0; padding: 0; text-align: left; display: grid; gap: .45em; align-content: start; }
+.vorschau { display: block; aspect-ratio: var(--ar); overflow: hidden; }
+.kachel img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.kachel:hover .kachel-titel { color: var(--siegel); }
+.kachel-info { display: block; min-width: 0; }
+.kachel-titel { display: block; font-weight: 600; line-height: 1.25; }
+.kachel-text { display: none; }
+.kachel-dauer { display: block; color: var(--grau); font-size: var(--t-klein); font-variant-numeric: tabular-nums; margin-top: .1em; }
+@media (max-width: 999px) {
+  .wand { gap: 0; }
+  .reihe { display: contents; }
+  .kachel { grid-template-columns: 120px minmax(0, 1fr); gap: 0 14px; padding-block: 12px; border-top: 1px solid var(--linie-licht); }
+  .vorschau { width: min(120px, calc(96px * var(--ar))); }
+  .kachel-text { display: block; color: var(--grau); font-size: var(--t-klein); line-height: 1.35; margin-top: .2em; }
+}
+
+.schritte { list-style: none; margin: 0; padding: 0; display: grid; gap: clamp(10px, 1.2vw, 20px); }
+.schritte li { display: grid; grid-template-columns: 2ch minmax(0, 1fr); gap: .6em; align-items: baseline; }
+.qr svg { display: block; width: 100%; height: auto; }
+.mitnehmen { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(16px, 2vw, 40px); align-content: center; }
+.mitnehmen figure { margin: 0; display: grid; gap: .5em; align-content: start; }
+.mitnehmen .qr { width: 100%; max-width: clamp(130px, 14vw, 270px); }
+.mitnehmen figcaption { font-size: var(--t-klein); }
+.kopfleiste { grid-column: 1 / -1; align-self: start; display: flex; justify-content: space-between; align-items: baseline; gap: 1em; padding-bottom: .6em; border-bottom: 1px solid var(--linie); }
+.kopf-name { font-family: var(--serif); font-weight: 700; font-size: var(--t-kern); }
+.kopfleiste a { font-weight: 600; text-decoration: none; border-bottom: 1px solid currentColor; }
+.kopf-rechts { display: grid; gap: clamp(20px, 2.6vw, 48px); align-content: center; }
+.qr-karte { display: flex; gap: 1em; align-items: center; color: var(--tinte); text-decoration: none; font-size: var(--t-klein); line-height: 1.4; }
+.qr-karte .qr { width: clamp(96px, 8.5vw, 170px); flex: none; }
+.qr-karte:hover b { color: var(--siegel); }
+.hinweisfeld { background: var(--hinweis); padding: .8em 1em; max-width: 62ch; }
+
+.vorlagen { display: grid; gap: clamp(20px, 2.4vw, 40px); grid-template-columns: minmax(0, 1fr); }
+@media (min-width: 1000px) { .vorlagen { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.vorlage { display: grid; gap: .6em; align-content: start; grid-template-rows: auto 1fr auto; }
+.vorlage pre { margin: 0; font: 400 var(--t-klein)/1.5 var(--mono); white-space: pre-wrap; overflow-wrap: anywhere; border-top: 1px solid var(--linie); padding-top: .7em; }
+.kopieren { justify-self: start; background: none; border: 0; border-bottom: 1px solid var(--tinte); padding: 0; font-size: var(--t-klein); font-weight: 600; }
+.fuss { display: flex; gap: 1em; align-items: center; padding-block: 24px clamp(64px, 8vh, 96px); border-top: 1px solid var(--linie); color: var(--grau); font-size: var(--t-klein); }
+.fuss svg { width: 30px; height: 30px; flex: none; }
+.fuss p { max-width: 90ch; }
+
+#buehne { display: none; position: fixed; right: max(16px, env(safe-area-inset-right, 0px)); bottom: calc(10px + env(safe-area-inset-bottom, 0px)); z-index: 10; align-items: center; gap: .5em; font-size: var(--t-klein); background: var(--grund); padding: .2em .4em; }
+@media (min-width: 1000px) { #buehne { display: flex; } }
+#buehne button { background: none; border: 0; padding: .1em .5em; }
+#buehne button:hover { color: var(--siegel); }
+#buehne-stand { font-variant-numeric: tabular-nums; color: var(--grau); }
+
+#kino { position: fixed; inset: 0; z-index: 20; overflow: hidden; background: var(--kino); color: var(--kino-text); display: grid; grid-template-columns: minmax(0, 1fr); grid-template-rows: auto minmax(0, 1fr); padding: calc(12px + env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) calc(16px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); gap: 10px; }
+#kino header { display: flex; justify-content: space-between; align-items: baseline; gap: 1em; }
+#kino-titel { font-family: var(--serif); font-weight: 700; font-size: var(--t-kern); min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.kino-kopf { display: grid; gap: .15em; min-width: 0; }
+#kino-text { font-size: var(--t-klein); opacity: .78; }
+#kino-zu { background: none; border: 1px solid var(--kino-text); color: var(--kino-text); padding: .3em .9em; flex: none; }
+#kino-buehne { position: relative; min-height: 0; min-width: 0; }
+#kino video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; }
+#kino-stand { position: absolute; inset: 0; margin: auto; width: fit-content; height: fit-content; font-variant-numeric: tabular-nums; }
+</style>
+
+</head>
+<body>
+<main class="blatt">
+
+<header class="bild kopf" id="start">
+  <div class="kopfleiste">
+    <span class="kopf-name">Swen Laempe</span>
+    <a href="https://swenlaempe.github.io/" target="_blank" rel="noopener">swenlaempe.github.io</a>
+  </div>
+  <div class="text">
+    <p class="kicker">KI-Live · 15.b MASTERCLUB Salescamp · 13.11.2026</p>
+    <h1>AI – Blabla oder wirklich nachhaltig?</h1>
+    <p class="kern">Schau dir die drei Filme an und mach danach die Übung weiter unten. Alles auf dieser Seite stammt aus meinem eigenen System.</p>
+    <div class="nur-buehne">
+      <button id="vorladen" type="button">Alle Filme vorladen</button><span id="vorladen-stand" class="meta"></span>
+      <p class="tasten">Pfeiltasten oder Presenter blättern, Leertaste startet den Film, F zeigt ihn groß.</p>
+    </div>
+  </div>
+  <div class="kopf-rechts">
+  <ol class="inhalt">
+    <li><a href="#tag"><span class="ziffer">1</span>Ein Tag mit meinem System</a></li>
+    <li><a href="#netz"><span class="ziffer">2</span>Mein Wissen als Netz</a></li>
+    <li><a href="#woerter"><span class="ziffer">3</span>Drei Wörter reichen</a></li>
+    <li><a href="#werke"><span class="ziffer">4</span>Was daraus entsteht</a></li>
+    <li><a href="#eure"><span class="ziffer">5</span>Jetzt eure Welt</a></li>
+    <li><a href="#morgen"><span class="ziffer">6</span>Morgen anfangen</a></li>
+    <li><a href="#kit"><span class="ziffer">7</span>Starterkit</a></li>
+  </ol>
+  <a class="qr-karte" href="https://swenlaempe.github.io/" target="_blank" rel="noopener"><span class="qr" data-qr="https://swenlaempe.github.io/" role="img" aria-label="QR-Code zu swenlaempe.github.io"></span><span><b>Meine Seite</b><br>Montag., Kipppunkt., Tandem. und Kontakt<br><span class="meta">swenlaempe.github.io</span></span></a>
+  </div>
+</header>
+
+<section class="bild" id="tag">
+  <div class="film quer" data-film="ein-tag"><video playsinline controls preload="none" poster="https://swenlaempe.github.io/videothek/01806b3a02/p1.jpg"></video><button class="spiel" type="button">Abspielen</button><span class="stand" hidden></span></div>
+  <div class="text">
+    <p class="titel"><span class="ziffer">1</span>Ein Tag</p>
+    <h2>Ein Tag mit meinem System.</h2>
+    <p>96 Sekunden aus einem Tag: Mails sortiert, Kennzahlen unserer Hotelkunden geprüft, Außenanlagen für unseren Neubau auf echten Katasterdaten geplant, eine Antwort als Entwurf vorbereitet. Gesendet wird erst, wenn ich draufdrücke.</p>
+    <p>Die Stimme ist mein Klon. Den Film hat mein System gebaut, ich habe Regie geführt.</p>
+    <dl class="klein">
+      <dt>MCP</dt><dd>Anschluss, über den der Agent ein anderes Programm bedient.</dd>
+      <dt>CLI</dt><dd>Programm, das per Textbefehl läuft.</dd>
+      <dt>Hook</dt><dd>Prüfung, die bei festgelegten Schritten automatisch läuft.</dd>
+    </dl>
+  </div>
+</section>
+
+<section class="bild" id="netz">
+  <div id="netz-flaeche" aria-label="Dreidimensionales Netz aus 436 Notizen, zum Drehen ziehen"><canvas id="netz-cv"></canvas></div>
+  <div class="text">
+    <p class="titel"><span class="ziffer">2</span>Mein Wissen</p>
+    <h2>Mein Wissen als Netz.</h2>
+    <p>Jeder Punkt ist eine Notiz, jede Linie eine Verknüpfung: 436 Notizen und 1.564 Verknüpfungen, Stand 07.11.2026. Daraus holt sich der Agent den Zusammenhang, wenn er ihn braucht.</p>
+    <p class="meta">Diese Seite enthält nur Ordner und Verknüpfungen als Nummern, keine Titel und keine Namen.</p>
+    <ul class="legende" id="legende"></ul>
+    <button id="neu-sortieren" type="button">Neu sortieren</button>
+  </div>
+</section>
+
+<section class="bild hoch" id="woerter">
+  <div class="film hoch" data-film="montag-07"><video playsinline controls preload="none" poster="https://swenlaempe.github.io/videothek/63dd0a83fa/p1.jpg"></video><button class="spiel" type="button">Abspielen</button><span class="stand" hidden></span></div>
+  <div class="text">
+    <p class="titel"><span class="ziffer">3</span>Die Begriffe</p>
+    <h2>Drei Wörter reichen.</h2>
+    <dl class="woerter">
+      <div><dt>Agent</dt><dd>Ein Researcher mit Briefing, Zugang zur Akte, festen Regeln und der Pflicht, vor dem Versand zu fragen.</dd></div>
+      <div><dt>Harness</dt><dd>Ein Pferd hat Kraft, ziehen kann es erst mit Geschirr. Auf Englisch heißt das Harness, und so nennen Fachleute alles, was um eine KI herum gebaut ist: Anweisungen, Wissen, Werkzeuge, Prüfungen.</dd></div>
+      <div><dt>Skill</dt><dd>Eine schriftliche Anleitung für eine Aufgabe, die immer wiederkommt. Der Agent holt sie sich, sobald die Aufgabe ansteht.</dd></div>
+    </dl>
+  </div>
+</section>
+
+<section class="bild voll" id="werke">
+  <div class="text">
+    <p class="titel"><span class="ziffer">4</span>Die Werke</p>
+    <h2>Was daraus entsteht.</h2>
+    <p>47 Werke seit dem 6. September, davon 39 Filme. Hier sind acht, die Serien laufen auf <a href="https://swenlaempe.github.io/" target="_blank" rel="noopener">swenlaempe.github.io</a>.</p>
+  </div>
+  <div class="wand">
+    <div class="reihe">
+      <button class="kachel" type="button" data-film="scheerbuend-kamerafahrt-16x9" style="--ar:1.7778"><span class="vorschau"><img src="https://swenlaempe.github.io/videothek/a7d3337754/p1.jpg" width="640" height="360" alt="" loading="lazy"></span><span class="kachel-info"><span class="kachel-titel">Kamerafahrt Scheerbünd 4</span><span class="kachel-text">Unser Neubau in 3D, auf echten Katasterdaten.</span><span class="kachel-dauer">12 s</span></span></button>
+      <button class="kachel" type="button" data-film="tandem-03-julie-lenz-9x16" style="--ar:0.5625"><span class="vorschau"><img src="https://swenlaempe.github.io/videothek/8498af41e7/p1.jpg" width="360" height="640" alt="" loading="lazy"></span><span class="kachel-info"><span class="kachel-titel">Tandem. Folge 03 · Julie Lenz</span><span class="kachel-text">Mein Klon fragt, eine Psychologie-Studentin antwortet, unter anderem zur Mitarbeiterbefragung.</span><span class="kachel-dauer">3:59 min</span></span></button>
+      <button class="kachel" type="button" data-film="der-landeanflug-16x9" style="--ar:1.7778"><span class="vorschau"><img src="https://swenlaempe.github.io/videothek/28c3d8dcc3/p1.jpg" width="640" height="360" alt="" loading="lazy"></span><span class="kachel-info"><span class="kachel-titel">Der Landeanflug</span><span class="kachel-text">Eine KI-Einführung als Landeanflug: Die Führung sitzt am Steuer.</span><span class="kachel-dauer">1:35 min</span></span></button>
+      <button class="kachel" type="button" data-film="montag-03-tempo-9x16" style="--ar:0.5625"><span class="vorschau"><img src="https://swenlaempe.github.io/videothek/5486f7eede/p1.jpg" width="360" height="640" alt="" loading="lazy"></span><span class="kachel-info"><span class="kachel-titel">Montag. Folge 03</span><span class="kachel-text">Tempo braucht Struktur: vom Bergfoto bis in den Grafikchip.</span><span class="kachel-dauer">1:48 min</span></span></button>
+    </div>
+    <div class="reihe">
+      <button class="kachel" type="button" data-film="resi-spot-16x9" style="--ar:1.7778"><span class="vorschau"><img src="https://swenlaempe.github.io/videothek/ded3c308ef/p1.jpg" width="640" height="360" alt="" loading="lazy"></span><span class="kachel-info"><span class="kachel-titel">Frag Resi</span><span class="kachel-text">Werbespot für Indicate Data, mit echten O-Tönen.</span><span class="kachel-dauer">33 s</span></span></button>
+      <button class="kachel" type="button" data-film="montag-01-verantwortung-9x16" style="--ar:0.5625"><span class="vorschau"><img src="https://swenlaempe.github.io/videothek/763d1c9cd5/p1.jpg" width="360" height="640" alt="" loading="lazy"></span><span class="kachel-info"><span class="kachel-titel">Montag. Folge 01</span><span class="kachel-text">Ein Agent trägt nie die Verantwortung. Hinter jede KI-Aufgabe gehört ein Name.</span><span class="kachel-dauer">47 s</span></span></button>
+      <button class="kachel" type="button" data-film="swen-os-spot-16x9" style="--ar:1.7778"><span class="vorschau"><img src="https://swenlaempe.github.io/videothek/ac71ae2ab5/p1.jpg" width="640" height="360" alt="" loading="lazy"></span><span class="kachel-info"><span class="kachel-titel">swen.OS-Spot</span><span class="kachel-text">Bau dein eigenes KI-Betriebssystem, gezeigt am echten Netz.</span><span class="kachel-dauer">26 s</span></span></button>
+      <button class="kachel" type="button" data-film="harness2-erklaert-16x9" style="--ar:1.7778"><span class="vorschau"><img src="https://swenlaempe.github.io/videothek/23eb5dc06b/p1.jpg" width="640" height="360" alt="" loading="lazy"></span><span class="kachel-info"><span class="kachel-titel">Harness² erklärt</span><span class="kachel-text">Für Neugierige: das Forschungspapier zum Harness, im Zitat erklärt.</span><span class="kachel-dauer">3:34 min</span></span></button>
+    </div>
+  </div>
+</section>
+
+<section class="bild" id="eure">
+  <div class="film quer" data-film="agent"><video playsinline controls preload="none" poster="https://swenlaempe.github.io/videothek/e90cf876e4/p1.jpg"></video><button class="spiel" type="button">Abspielen</button><span class="stand" hidden></span></div>
+  <div class="text">
+    <p class="titel"><span class="ziffer">5</span>Euer Fall</p>
+    <h2>Das ist meine Welt. Jetzt eure.</h2>
+    <p>Ein Teamprojekt als Kette aus sieben Gliedern. Die grauen übernimmt ein Agent, die farbigen bleiben beim Berater: Auftrag, Gespräch, Workshop.</p>
+    <dl class="klein">
+      <dt>Schleife</dt><dd>Der Agent liest, plant, handelt, prüft und fragt nach.</dd>
+      <dt>Grenzen</dt><dd>Namen geschwärzt, nichts ohne Freigabe, die Verantwortung bleibt beim Menschen.</dd>
+    </dl>
+  </div>
+</section>
+
+<section class="bild" id="morgen">
+  <div class="text">
+    <p class="titel"><span class="ziffer">6</span>Die Übung</p>
+    <h2>Morgen anfangen.</h2>
+    <p class="kern">Was müsste dein Assistent über dich wissen? Für den Anfang reicht Beschreiben.</p>
+    <ol class="schritte">
+      <li><span class="ziffer">1</span><span>Schreib drei Regeln in eine leere Notiz und kopier sie vor der nächsten Aufgabe in den Chat.</span></li>
+      <li><span class="ziffer">2</span><span>Leg für einen laufenden Fall eine Akte an, ohne echte Namen.</span></li>
+      <li><span class="ziffer">3</span><span>Schreib den Ablauf auf, den du immer wieder machst. Das ist dein erster Skill.</span></li>
+    </ol>
+    <p class="hinweisfeld">Echte Namen und Berichte gehören nicht ungeschützt in einen Cloud-Dienst. RELIEF-Daten sind Gesundheitsdaten. Diagnostik für die Auswahl ist nach AI Act Hochrisiko. Die Verantwortung trägt immer ein Mensch.</p>
+  </div>
+  <div class="mitnehmen">
+    <figure><div class="qr" data-qr="https://swenlaempe.github.io/ki-live/" role="img" aria-label="QR-Code zu dieser Seite"></div><figcaption><b>Diese Seite</b><br>Filme und Vorlagen zum Mitnehmen</figcaption></figure>
+    <figure><div class="qr" data-qr="https://swenlaempe.github.io/" role="img" aria-label="QR-Code zu swenlaempe.github.io"></div><figcaption><b>Meine Seite</b><br>swenlaempe.github.io</figcaption></figure>
+  </div>
+</section>
+
+<section class="bild voll" id="kit">
+  <div class="text">
+    <p class="titel"><span class="ziffer">7</span>Zum Kopieren</p>
+    <h2>Starterkit.</h2>
+    <p>Drei Vorlagen für drei Textdateien in einem Ordner. Die erste gibst du deinem Assistenten vor jeder Aufgabe mit, die beiden anderen, sobald sie zur Aufgabe passen.</p>
+  </div>
+  <div class="vorlagen">
+    <article class="vorlage">
+      <h3>Über mich</h3>
+      <pre id="v-ich"># Über mich
+Ich arbeite als: [Rolle, Schwerpunkt, Kundenkreis]
+So schreibe ich: [Anrede, Ton, Länge]
+
+Diese Regeln gelten immer:
+1. Nichts geht ohne meine Freigabe raus.
+2. Fehlt dir etwas, frag nach, statt zu raten.
+3. [deine eigene Regel]</pre>
+      <button class="kopieren" type="button" data-kopie="v-ich">Kopieren</button>
+    </article>
+    <article class="vorlage">
+      <h3>Akte</h3>
+      <pre id="v-akte"># Fall: [Kürzel, kein Klarname]
+Auftrag: [was der Kunde will, in einem Satz]
+Stand: [Datum, was zuletzt passiert ist]
+Beteiligte: [Rollen, keine Namen]
+Offen: [nächster Schritt, wer, bis wann]</pre>
+      <button class="kopieren" type="button" data-kopie="v-akte">Kopieren</button>
+    </article>
+    <article class="vorlage">
+      <h3>Ablauf (dein Skill)</h3>
+      <pre id="v-ablauf"># Ablauf: [Name, zum Beispiel Teamworkshop vorbereiten]
+Wann: [was den Ablauf auslöst]
+Du bekommst: [welche Unterlagen, ohne Namen]
+Schritte:
+1. [Schritt]
+2. [Schritt]
+3. [Schritt]
+Fertig ist es, wenn: [prüfbare Bedingung]
+Das entscheide ich selbst: [was du nicht abgibst]</pre>
+      <button class="kopieren" type="button" data-kopie="v-ablauf">Kopieren</button>
+    </article>
+  </div>
+  <p>Zum Anfangen reichen eine Notiz und ein KI-Chat. Damit der Agent selbst Dateien lesen kann, nutze ich <a href="https://claude.com/claude-code" target="_blank" rel="noopener">Claude Code</a> im Terminal. Weitere Filme laufen auf <a href="https://swenlaempe.github.io/" target="_blank" rel="noopener">swenlaempe.github.io</a>.</p>
+</section>
+
+<footer class="fuss">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-label="Siegelmarke swen.OS: türkises Wachssiegel mit S">
+  <path fill="#0e6b6b" d="M50,4.5 C60.5,4 70.5,8.5 78.5,15 C86.5,21.5 93,31 94.5,41.5 C96,52 92.5,61.5 88.5,70 C84,79.5 76.5,89 66.5,93 C56.5,97 44,97.5 34.5,93.5 C24.5,89.5 15.5,81.5 10.5,72 C5.5,62.5 4,51.5 5.5,41.5 C7,31.5 12.5,21.5 20.5,14.5 C28.5,7.5 39.5,5 50,4.5 Z"/>
+  <text x="50" y="63" text-anchor="middle" font-family="Charter, Georgia, serif" font-size="38" font-weight="700" fill="#ffffff">S</text>
+</svg>
+  <p>In den meisten Filmen spricht mein gekennzeichneter Stimmklon. Swen Laempe, 2026. <a href="https://swenlaempe.github.io/impressum.html" target="_blank" rel="noopener">Impressum</a> · <a href="https://swenlaempe.github.io/datenschutz.html" target="_blank" rel="noopener">Datenschutz</a></p>
+</footer>
+</main>
+
+<nav id="buehne" aria-label="Blättern">
+  <button id="zurueck" type="button" aria-label="Voriger Abschnitt">‹</button>
+  <span id="buehne-stand"></span>
+  <button id="weiter" type="button" aria-label="Nächster Abschnitt">›</button>
+  <button id="vollbild" type="button">Vollbild</button>
+</nav>
+
+<div id="kino" role="dialog" aria-modal="true" aria-labelledby="kino-titel" hidden>
+  <header><div class="kino-kopf"><span id="kino-titel"></span><span id="kino-text"></span></div><button id="kino-zu" type="button">Schließen</button></header>
+  <div id="kino-buehne"><video id="kino-video" playsinline controls></video><span id="kino-stand" hidden></span></div>
+</div>
+
+<script src="../vendor/qrcode/qrcode.min.js"></script>
+<script>
+const FILME = {"ein-tag":{"v":"https://swenlaempe.github.io/videothek/01806b3a02/v1.mp4","b":5187152,"t":"Ein Tag mit swen.OS"},"montag-07":{"v":"https://swenlaempe.github.io/videothek/63dd0a83fa/v1.mp4","b":2434409,"t":"Montag. Folge 07"},"agent":{"v":"https://swenlaempe.github.io/videothek/e90cf876e4/v1.mp4","b":20484220,"t":"Der Agent im Teamprojekt"},"scheerbuend-kamerafahrt-16x9":{"v":"https://swenlaempe.github.io/videothek/a7d3337754/v1.mp4","b":1533899,"t":"Kamerafahrt Scheerbünd 4","d":"Unser Neubau in 3D, auf echten Katasterdaten."},"tandem-03-julie-lenz-9x16":{"v":"https://swenlaempe.github.io/videothek/8498af41e7/v1.mp4","b":19273824,"t":"Tandem. Folge 03 · Julie Lenz","d":"Mein Klon fragt, eine Psychologie-Studentin antwortet, unter anderem zur Mitarbeiterbefragung."},"der-landeanflug-16x9":{"v":"https://swenlaempe.github.io/videothek/28c3d8dcc3/v1.mp4","b":3672634,"t":"Der Landeanflug","d":"Eine KI-Einführung als Landeanflug: Die Führung sitzt am Steuer."},"montag-03-tempo-9x16":{"v":"https://swenlaempe.github.io/videothek/5486f7eede/v1.mp4","b":7674798,"t":"Montag. Folge 03","d":"Tempo braucht Struktur: vom Bergfoto bis in den Grafikchip."},"resi-spot-16x9":{"v":"https://swenlaempe.github.io/videothek/ded3c308ef/v1.mp4","b":1879104,"t":"Frag Resi","d":"Werbespot für Indicate Data, mit echten O-Tönen."},"montag-01-verantwortung-9x16":{"v":"https://swenlaempe.github.io/videothek/763d1c9cd5/v1.mp4","b":1898895,"t":"Montag. Folge 01","d":"Ein Agent trägt nie die Verantwortung. Hinter jede KI-Aufgabe gehört ein Name."},"swen-os-spot-16x9":{"v":"https://swenlaempe.github.io/videothek/ac71ae2ab5/v1.mp4","b":2601267,"t":"swen.OS-Spot","d":"Bau dein eigenes KI-Betriebssystem, gezeigt am echten Netz."},"harness2-erklaert-16x9":{"v":"https://swenlaempe.github.io/videothek/23eb5dc06b/v1.mp4","b":11181180,"t":"Harness² erklärt","d":"Für Neugierige: das Forschungspapier zum Harness, im Zitat erklärt."}};
+// DIREKT: GitHub liefert Teilstücke (Range), dort spielen Filme direkt. Im Artifact-Speicher geht das nicht, dort Blob.
+const DIREKT = true;
+const reduziert = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const $ = (s, w = document) => w.querySelector(s);
+const $$ = (s, w = document) => [...w.querySelectorAll(s)];
+
+// Der Artifact-Speicher kann kein Range: Filme ganz laden und als Blob abspielen (Regel feedback-artifact-medien-iphone).
+const blobs = new Map();
+function holeFilm(id) {
+  if (!blobs.has(id)) {
+    const p = (async () => {
+      const f = FILME[id];
+      const r = await fetch(f.v);
+      if (!r.ok) throw new Error("HTTP " + r.status);
+      if (!r.body) return URL.createObjectURL(new Blob([await r.blob()], { type: "video/mp4" }));
+      const teile = [], leser = r.body.getReader();
+      let n = 0;
+      for (;;) {
+        const { done, value } = await leser.read();
+        if (done) break;
+        teile.push(value); n += value.length;
+        document.dispatchEvent(new CustomEvent("filmstand", { detail: { id, prozent: Math.min(99, Math.round(n / f.b * 100)) } }));
+      }
+      return URL.createObjectURL(new Blob(teile, { type: "video/mp4" }));
+    })();
+    p.catch(() => blobs.delete(id));
+    blobs.set(id, p);
+  }
+  return blobs.get(id);
+}
+
+const alleVideos = () => $$("video");
+function halteAndereAn(aktiv) { alleVideos().forEach(v => { if (v !== aktiv) v.pause(); }); }
+
+const boxen = $$(".film[data-film]").map(box => {
+  const id = box.dataset.film, v = $("video", box), knopf = $(".spiel", box), stand = $(".stand", box);
+  let will = false, laeuft = null;
+  document.addEventListener("filmstand", e => { if (e.detail.id === id && !v.getAttribute("src")) { stand.hidden = false; stand.textContent = `Film lädt … ${e.detail.prozent} %`; } });
+  function bereite() {
+    if (v.getAttribute("src")) return Promise.resolve();
+    if (DIREKT) { v.preload = "metadata"; v.src = FILME[id].v; stand.hidden = true; return Promise.resolve(); }
+    if (laeuft) return laeuft;
+    laeuft = holeFilm(id).then(url => {
+      v.preload = "auto"; v.src = url; stand.hidden = true;
+    }).catch(() => {
+      stand.hidden = false; stand.textContent = "Film nicht geladen. Netz prüfen und noch einmal drücken."; knopf.hidden = false; will = false;
+    }).finally(() => { laeuft = null; });
+    return laeuft;
+  }
+  async function spiele() {
+    if (v.getAttribute("src")) { try { await v.play(); } catch { knopf.hidden = false; } return; }
+    will = true; knopf.hidden = true; stand.hidden = false; stand.textContent = "Film lädt …";
+    await bereite();
+    if (will && v.getAttribute("src")) { will = false; try { await v.play(); } catch { knopf.hidden = false; } }
+  }
+  knopf.addEventListener("click", spiele);
+  v.addEventListener("play", () => { knopf.hidden = true; halteAndereAn(v); });
+  return { box, id, v, bereite, spiele };
+});
+
+if ("IntersectionObserver" in window) {
+  const nah = new IntersectionObserver(eintraege => eintraege.forEach(e => {
+    if (e.isIntersecting) { nah.unobserve(e.target); boxen.find(b => b.box === e.target)?.bereite(); }
+  }), { rootMargin: "700px 0px" });
+  boxen.forEach(b => nah.observe(b.box));
+}
+
+// Vorladen für die Bühne: danach läuft jeder Film ohne Netz, solange die Seite offen bleibt.
+const vorKnopf = $("#vorladen"), vorStand = $("#vorladen-stand");
+if (DIREKT) { vorKnopf.hidden = true; vorStand.hidden = true; }
+vorKnopf.addEventListener("click", async () => {
+  vorKnopf.disabled = true;
+  const ids = Object.keys(FILME); let fertig = 0, fehler = 0;
+  const zeige = () => { vorStand.textContent = fehler ? `${fertig} von ${ids.length} geladen, ${fehler} fehlgeschlagen` : `${fertig} von ${ids.length} geladen`; };
+  zeige();
+  for (const id of ids) {
+    try { await holeFilm(id); fertig++; } catch { fehler++; }
+    zeige();
+  }
+  await Promise.all(boxen.map(b => b.bereite()));
+  if (fehler) vorKnopf.disabled = false;
+});
+
+// Kino für die Werkschau
+const kino = $("#kino"), kv = $("#kino-video"), kt = $("#kino-titel"), ks = $("#kino-stand");
+let kinoId = null, kinoAus = null;
+async function oeffneKino(id, ausloeser) {
+  kinoId = id; kinoAus = ausloeser;
+  kt.textContent = FILME[id].t; $("#kino-text").textContent = FILME[id].d || ""; kino.hidden = false; $("#kino-zu").focus();
+  kv.pause(); kv.removeAttribute("src"); kv.load();
+  ks.hidden = false; ks.textContent = "Film lädt …";
+  try {
+    const url = DIREKT ? FILME[id].v : await holeFilm(id);
+    if (kinoId !== id) return;
+    kv.src = url; ks.hidden = true;
+    try { await kv.play(); } catch { /* Der Browser wartet auf einen Klick: Die Steuerleiste ist sichtbar. */ }
+  } catch { if (kinoId === id) ks.textContent = "Film nicht geladen. Netz prüfen und noch einmal öffnen."; }
+}
+function schliesseKino() {
+  kinoId = null; kv.pause(); kv.removeAttribute("src"); kv.load(); kino.hidden = true;
+  kinoAus?.focus();
+}
+document.addEventListener("filmstand", e => { if (e.detail.id === kinoId && !kv.getAttribute("src")) ks.textContent = `Film lädt … ${e.detail.prozent} %`; });
+$$(".kachel").forEach(k => k.addEventListener("click", () => oeffneKino(k.dataset.film, k)));
+$("#kino-zu").addEventListener("click", schliesseKino);
+kv.addEventListener("play", () => halteAndereAn(kv));
+
+// Blättern
+const bilder = $$(".bild");
+const hier = () => {
+  const y = innerHeight * .35; let i = 0;
+  bilder.forEach((b, k) => { if (b.getBoundingClientRect().top <= y) i = k; });
+  return i;
+};
+function geh(schritt) {
+  const ziel = bilder[Math.max(0, Math.min(bilder.length - 1, hier() + schritt))];
+  halteAndereAn(null);
+  ziel.scrollIntoView({ behavior: reduziert ? "auto" : "smooth", block: "start" });
+}
+const bStand = $("#buehne-stand");
+function zeigeStand() { bStand.textContent = `${hier() + 1} / ${bilder.length}`; }
+let wartet = false;
+addEventListener("scroll", () => { if (wartet) return; wartet = true; requestAnimationFrame(() => { wartet = false; zeigeStand(); }); }, { passive: true });
+zeigeStand();
+$("#zurueck").addEventListener("click", () => geh(-1));
+$("#weiter").addEventListener("click", () => geh(1));
+$("#vollbild").addEventListener("click", async () => {
+  try { document.fullscreenElement ? await document.exitFullscreen() : await document.documentElement.requestFullscreen(); }
+  catch { $("#vollbild").hidden = true; }
+});
+const filmHier = () => boxen.find(b => bilder[hier()].contains(b.box));
+addEventListener("keydown", e => {
+  if (e.metaKey || e.ctrlKey || e.altKey) return;
+  if (!kino.hidden) { if (e.key === "Escape") schliesseKino(); return; }
+  const t = e.target;
+  if (t.matches?.("input, textarea, select")) return;
+  const aufVideo = t.matches?.("video");
+  if (e.key === "PageDown" || (e.key === "ArrowRight" && !aufVideo)) { e.preventDefault(); geh(1); }
+  else if (e.key === "PageUp" || (e.key === "ArrowLeft" && !aufVideo)) { e.preventDefault(); geh(-1); }
+  else if (e.key === " " && !t.matches?.("button, a, video")) {
+    const f = filmHier(); if (!f) return;
+    e.preventDefault(); f.v.paused ? f.spiele() : f.v.pause();
+  } else if ((e.key === "f" || e.key === "F") && !aufVideo) {
+    const f = filmHier(); if (f && f.v.requestFullscreen) f.v.requestFullscreen().catch(() => {});
+  }
+});
+
+// QR-Codes: feste Adressen, weil die Seite selbst in einem eigenen Rahmen läuft.
+$$("[data-qr]").forEach(feld => {
+  const ziel = feld.dataset.qr;
+  if (typeof qrcode !== "function") { feld.textContent = ziel; return; }
+  const q = qrcode(0, "M"); q.addData(ziel); q.make();
+  const n = q.getModuleCount(); let d = "";
+  for (let r = 0; r < n; r++) for (let c = 0; c < n; c++) if (q.isDark(r, c)) d += `M${c},${r}h1v1h-1z`;
+  feld.innerHTML = `<svg viewBox="-2 -2 ${n + 4} ${n + 4}" shape-rendering="crispEdges"><rect x="-2" y="-2" width="${n + 4}" height="${n + 4}" fill="#ffffff"/><path d="${d}" fill="#221b18"/></svg>`;
+});
+
+// Wand einpassen: Auf der Bühne soll der ganze Abschnitt auf einen Bildschirm passen, die Formate bleiben dabei unverändert.
+const wand = $(".wand"), buehneMq = matchMedia("(min-width: 1000px) and (min-height: 540px)");
+function passeWand() {
+  wand.style.maxWidth = "";
+  if (!buehneMq.matches) return;
+  const s = $("#werke"), pad = parseFloat(getComputedStyle(s).paddingBottom), reihen = $$(".reihe", wand);
+  for (let n = 0; n < 3; n++) {
+    const ueber = wand.getBoundingClientRect().bottom - s.getBoundingClientRect().top + pad - innerHeight;
+    if (ueber <= 1) return;
+    const bildH = reihen.reduce((a, r) => a + $(".vorschau", r).getBoundingClientRect().height, 0);
+    const luecke = (reihen[0].children.length - 1) * (parseFloat(getComputedStyle(reihen[0]).columnGap) || 0);
+    const W = wand.getBoundingClientRect().width;
+    wand.style.maxWidth = Math.max(420, luecke + (W - luecke) * Math.max(.3, (bildH - ueber) / bildH)) + "px";
+  }
+}
+passeWand();
+addEventListener("resize", passeWand);
+document.fonts?.ready.then(passeWand);
+
+// Vorlagen kopieren
+$$(".kopieren").forEach(k => k.addEventListener("click", async () => {
+  const pre = document.getElementById(k.dataset.kopie);
+  try {
+    await navigator.clipboard.writeText(pre.textContent);
+    k.textContent = "Kopiert";
+  } catch {
+    const r = document.createRange(); r.selectNodeContents(pre);
+    const s = getSelection(); s.removeAllRanges(); s.addRange(r);
+    k.textContent = "Markiert, jetzt kopieren";
+  }
+  setTimeout(() => { k.textContent = "Kopieren"; }, 2500);
+}));
+</script>
+
+<script type="module">
+import * as THREE from "../vendor/three/three.module.min.js";
+
+const D = {"groups":[["Personen",96],["Projekte",79],["Firmen",60],["Privat",46],["Systeme",32],["Immobilien",28],["Meta",21],["Bildung",16],["Wettbewerb",16],["K\u00fcche",16],["Reisen",11],["Fahrzeuge",10],["Inbox",4],["Index",1]],"n":[13,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,12,12,12,12,3,3,3,3,3,3,3,3,3,3,3,3,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,10,10,10,10,10,10,10,10,10,10,10,11,11,11,11,11,11,11,11,11,11],"e":[0,5,0,17,0,77,0,93,0,109,0,124,0,144,0,158,0,160,0,180,0,276,0,361,0,383,0,415,0,426,1,2,1,325,2,7,2,325,3,4,3,5,3,7,3,13,3,173,3,174,3,278,3,411,4,5,4,7,4,45,4,47,4,69,4,206,4,275,4,304,4,323,5,6,5,7,5,8,5,9,5,10,5,13,5,278,5,389,5,390,5,393,6,8,7,12,7,45,7,236,7,242,7,260,7,278,7,383,8,15,8,278,8,328,9,13,9,278,10,11,10,12,10,13,10,14,10,15,11,278,11,349,12,13,12,69,12,195,12,202,12,214,12,278,12,315,12,316,12,411,13,15,13,278,14,266,14,313,14,325,14,339,15,40,15,278,15,316,15,328,16,343,16,344,18,22,18,65,18,68,18,69,18,70,18,116,18,119,18,123,18,149,18,155,18,340,18,377,18,379,18,429,18,434,18,435,19,57,19,68,19,223,19,240,19,341,20,68,20,265,20,341,21,271,21,422,21,424,22,68,22,379,23,39,23,40,24,68,24,329,24,379,25,40,25,69,25,343,25,350,25,354,26,40,26,52,26,60,26,69,26,90,26,147,26,148,26,188,26,211,26,214,26,241,26,274,26,289,26,293,26,296,26,343,26,345,26,354,27,28,27,29,27,227,27,336,27,346,27,376,27,377,27,379,28,29,28,184,28,227,28,338,28,341,28,379,29,36,29,42,29,68,29,71,29,184,29,227,29,338,29,346,29,365,29,376,29,377,29,379,30,69,30,88,30,121,30,196,30,303,30,391,31,104,31,346,32,65,32,67,32,70,32,120,32,155,32,214,33,72,33,214,34,56,34,68,34,198,34,207,34,346,34,376,35,43,35,187,35,212,35,292,35,341,35,367,36,256,36,346,36,376,36,377,36,379,37,338,38,40,38,69,38,90,38,118,38,154,38,155,38,214,38,259,38,295,38,296,39,40,39,60,39,263,40,47,40,52,40,59,40,60,40,65,40,68,40,72,40,77,40,78,40,79,40,80,40,81,40,82,40,83,40,89,40,90,40,91,40,92,40,111,40,118,40,121,40,147,40,148,40,150,40,154,40,169,40,195,40,197,40,214,40,238,40,242,40,260,40,261,40,266,40,277,40,278,40,279,40,287,40,288,40,293,40,294,40,295,40,296,40,307,40,328,40,333,40,338,40,343,40,344,40,348,40,353,40,354,40,379,40,390,40,402,40,433,41,203,41,377,42,56,42,199,42,203,42,227,42,346,43,49,43,64,43,70,43,73,43,112,43,147,43,182,43,187,43,212,43,251,43,292,43,341,43,369,43,373,43,374,43,381,44,68,44,72,44,190,44,223,44,244,44,338,44,346,44,379,45,209,45,224,45,236,45,260,45,278,46,48,46,189,46,221,46,346,46,370,46,376,47,69,47,196,47,202,47,293,47,303,47,308,47,309,47,310,47,311,47,314,47,318,47,323,47,343,48,248,48,337,48,346,48,376,48,377,49,70,49,212,50,124,50,141,50,291,51,65,51,70,51,111,51,269,52,60,52,69,52,85,52,148,52,192,52,237,52,264,53,63,53,201,53,301,54,61,54,225,54,262,54,322,54,349,54,354,55,68,55,183,55,207,55,346,55,376,55,377,55,379,56,68,56,143,56,148,56,203,56,246,56,268,56,336,56,346,56,376,56,377,57,68,57,208,57,233,57,341,58,68,58,257,58,336,59,65,59,78,59,83,59,197,59,242,59,335,59,402,60,69,60,76,60,232,60,238,60,294,60,343,60,350,61,65,61,354,62,147,62,216,62,234,62,283,62,284,62,420,62,430,62,431,62,432,62,433,63,150,63,152,63,185,63,186,63,201,63,235,63,252,63,286,63,301,63,334,63,346,64,182,65,67,65,72,65,111,65,112,65,116,65,119,65,120,65,147,65,214,65,217,65,220,65,221,65,253,65,266,65,337,65,354,65,370,65,428,65,429,65,433,65,434,65,435,66,329,66,376,67,70,67,120,67,155,68,69,68,70,68,71,68,72,68,112,68,117,68,122,68,147,68,181,68,223,68,226,68,246,68,253,68,254,68,277,68,280,68,281,68,329,68,335,68,337,68,338,68,341,68,342,68,346,68,377,68,379,68,380,68,413,69,70,69,75,69,77,69,84,69,85,69,86,69,87,69,88,69,95,69,104,69,112,69,116,69,118,69,121,69,122,69,147,69,148,69,149,69,150,69,152,69,154,69,185,69,189,69,193,69,194,69,196,69,202,69,206,69,214,69,215,69,220,69,226,69,237,69,246,69,247,69,249,69,255,69,273,69,275,69,279,69,280,69,281,69,286,69,293,69,295,69,296,69,323,69,333,69,335,69,337,69,338,69,342,69,343,69,344,69,345,69,347,69,348,69,349,69,350,69,351,69,352,69,353,69,354,69,359,69,377,69,409,69,411,69,413,69,428,69,434,69,435,70,72,70,111,70,112,70,116,70,119,70,120,70,147,70,149,70,195,70,214,70,246,70,253,70,292,70,350,70,355,70,413,71,72,71,74,71,111,71,112,71,147,71,195,71,210,71,214,71,223,71,231,71,246,71,253,71,270,71,277,71,355,71,356,71,357,71,364,71,365,71,366,71,367,71,368,71,382,71,413,72,77,72,89,72,90,72,91,72,92,72,112,72,117,72,122,72,214,72,220,72,223,72,231,72,246,72,253,72,277,72,281,72,292,72,295,72,296,72,329,72,335,72,338,72,377,72,379,72,381,72,413,73,243,73,374,74,148,74,150,74,258,74,270,74,299,75,202,75,249,76,238,77,78,77,84,77,89,78,79,78,80,78,81,78,82,78,83,80,394,83,296,83,390,84,85,84,86,84,87,84,88,84,121,85,87,85,279,85,354,86,121,87,121,87,343,87,345,87,348,87,353,87,354,88,121,88,343,88,349,89,90,89,91,89,92,89,296,90,296,91,214,91,296,92,296,93,94,93,96,93,105,93,106,93,107,95,104,95,346,95,377,96,97,96,98,96,99,96,100,96,101,96,102,96,103,96,218,97,103,101,103,102,103,104,346,104,377,108,377,109,110,109,113,109,115,110,111,110,112,111,112,111,122,111,195,111,202,111,214,111,223,111,292,111,335,112,121,112,253,112,350,113,114,113,115,114,222,116,119,116,120,116,149,116,155,116,156,116,350,117,281,117,377,117,379,118,121,118,154,118,214,118,295,118,296,119,120,119,123,119,189,119,191,119,214,119,218,119,221,120,155,120,156,120,189,120,214,120,218,120,221,120,297,120,350,121,246,121,343,121,344,122,253,122,281,122,329,122,335,122,377,122,379,123,218,123,221,123,266,124,128,124,132,124,134,124,135,124,137,124,139,124,141,125,126,125,131,125,291,126,127,126,130,126,131,126,133,126,135,126,136,126,137,126,140,126,142,126,147,126,228,126,282,126,291,127,130,127,140,127,189,127,282,128,135,129,131,130,189,130,266,131,135,131,136,131,138,131,282,133,135,133,136,133,138,133,228,133,291,134,135,135,136,135,138,135,140,136,142,136,291,137,140,140,142,140,282,140,291,141,142,141,291,142,291,143,203,143,336,143,346,143,376,147,168,147,188,147,189,147,206,147,211,147,214,147,216,147,218,147,221,147,234,147,261,147,275,147,282,147,284,147,295,147,329,147,346,147,362,147,370,147,373,147,377,147,379,147,417,147,418,147,419,147,424,147,427,147,433,148,189,148,192,148,203,148,211,148,218,148,221,148,237,148,258,148,264,148,295,148,346,148,417,149,153,149,156,149,261,150,193,150,295,151,284,151,286,151,295,151,299,151,329,151,346,152,186,152,193,152,286,153,167,153,168,153,282,153,329,154,214,154,295,155,156,155,211,155,214,155,259,156,189,156,362,159,173,159,174,159,176,159,278,159,354,160,162,160,164,160,166,160,171,160,175,160,177,160,178,161,166,161,172,161,179,161,285,162,163,162,165,164,170,166,167,166,168,166,170,166,172,166,176,166,177,166,179,166,285,166,408,167,168,167,170,169,172,169,261,170,176,170,386,170,388,170,393,170,402,176,388,177,178,177,386,177,400,177,408,178,261,178,388,179,285,181,223,181,346,181,377,181,379,182,290,182,373,182,374,183,346,184,227,184,248,184,280,184,336,184,346,184,365,184,376,184,377,184,379,185,286,185,290,185,342,185,347,185,388,186,252,186,286,186,334,187,212,187,369,188,211,188,217,188,289,188,345,188,354,189,218,189,255,189,266,189,277,189,290,189,295,189,297,189,298,189,354,189,370,189,405,189,418,189,420,190,223,190,244,190,379,191,221,191,246,192,237,192,264,193,286,194,202,194,340,194,347,194,351,194,352,194,354,195,202,195,280,195,290,195,292,195,342,195,343,195,345,195,354,195,355,195,364,196,202,197,261,197,288,197,290,197,388,197,433,198,203,198,346,199,207,199,230,199,268,199,329,199,342,199,346,199,376,199,377,199,378,199,379,200,434,200,435,201,334,202,210,202,227,202,249,202,312,202,336,202,337,202,338,202,340,202,342,202,343,202,345,202,346,202,347,202,349,202,351,202,354,202,377,203,207,203,268,203,336,203,346,203,376,203,378,204,239,204,254,204,338,204,341,204,375,205,266,205,290,206,295,206,305,206,323,206,324,206,340,207,223,207,227,207,379,208,233,208,254,208,341,209,236,209,278,210,231,210,337,210,365,211,214,211,217,211,218,211,241,211,259,211,274,211,289,211,293,211,296,211,313,211,340,211,343,211,345,211,354,211,364,212,250,212,290,212,292,212,336,212,341,212,367,212,369,212,373,213,223,213,366,214,220,214,241,214,242,214,251,214,259,214,270,214,290,214,292,214,293,214,295,214,296,214,340,214,355,214,356,214,357,214,358,214,364,214,373,215,247,215,350,216,234,216,283,216,284,216,431,216,432,216,433,217,354,218,221,218,235,218,255,218,290,218,297,218,298,218,299,218,300,218,370,218,405,218,418,219,266,219,290,220,292,221,246,221,301,221,340,221,370,221,418,221,429,222,253,222,266,223,230,223,231,223,273,223,277,223,280,223,281,223,290,223,329,223,337,223,338,223,341,223,355,223,365,223,366,223,367,223,368,223,376,223,377,224,236,224,278,225,262,226,273,226,328,226,342,227,336,227,346,227,376,227,377,228,282,228,291,229,290,229,354,229,364,230,329,230,362,230,366,231,290,231,337,231,365,232,293,233,254,233,341,234,284,234,433,236,278,236,325,237,264,237,340,237,354,238,242,238,293,239,341,239,375,240,341,241,296,242,260,242,290,242,293,242,295,242,340,242,354,242,388,243,338,243,374,244,379,245,350,246,270,246,292,246,429,247,350,248,346,248,377,250,292,250,381,251,373,253,266,253,292,253,329,253,369,253,381,254,341,256,346,256,376,257,336,258,299,259,295,259,296,261,277,261,288,261,290,261,340,261,348,261,354,265,341,266,267,266,287,266,290,266,339,267,290,268,336,268,346,271,422,271,424,272,290,272,337,272,362,272,376,272,377,272,403,273,292,273,342,273,379,274,339,274,340,274,354,275,295,275,305,275,308,275,309,275,314,275,323,275,324,276,323,277,281,277,329,277,335,277,336,277,337,277,338,277,341,277,362,277,363,277,370,277,379,277,407,277,411,278,287,278,288,278,296,278,328,278,331,278,339,278,354,278,384,278,389,278,390,278,391,278,392,278,393,278,394,278,395,278,396,278,397,278,398,278,399,278,411,279,333,279,343,279,354,280,337,280,342,280,346,280,377,280,378,281,329,281,335,281,337,281,377,281,379,282,291,283,284,283,430,283,431,283,432,283,433,284,431,284,432,284,433,287,404,289,330,289,412,292,335,292,381,293,296,294,296,295,296,297,299,297,300,297,301,301,339,302,313,302,323,302,324,302,325,303,308,303,323,303,324,303,325,304,323,304,324,304,325,305,306,305,307,305,309,305,320,305,323,305,324,305,325,305,326,306,307,306,323,306,324,306,325,306,326,307,323,307,325,307,326,307,354,308,310,308,317,308,323,309,310,309,323,310,323,310,326,311,314,311,323,311,398,312,315,312,323,312,326,313,316,313,323,313,324,313,325,313,326,313,327,314,323,315,323,315,325,315,326,315,339,315,411,316,323,316,324,316,326,316,339,317,323,318,319,318,323,318,326,319,323,319,326,320,323,320,326,321,323,321,326,322,323,322,325,322,345,323,324,323,325,323,326,323,327,323,340,323,352,323,412,324,325,324,326,324,327,325,326,325,327,325,339,325,352,326,327,326,339,328,340,329,331,329,335,329,338,329,341,329,363,329,376,329,379,330,339,330,340,330,412,331,363,332,362,332,371,333,343,333,353,333,354,335,377,335,379,336,338,336,341,336,346,336,376,336,377,336,379,336,380,337,338,337,341,337,362,337,365,337,376,337,377,337,378,337,379,337,427,337,433,338,341,338,346,338,374,338,375,338,377,338,379,338,380,339,340,339,349,339,384,339,387,339,395,339,411,339,412,341,375,341,377,341,379,341,380,342,346,342,377,343,344,343,345,343,349,343,354,343,402,344,354,345,347,345,348,345,352,345,354,345,412,346,347,346,376,346,377,346,378,346,379,346,388,347,352,350,377,351,354,353,354,354,364,354,402,355,356,355,357,355,358,355,364,356,357,356,358,356,364,357,358,357,364,358,364,360,362,362,371,362,372,362,403,369,373,369,381,370,418,373,374,374,381,375,377,375,379,375,380,376,377,376,379,377,378,377,379,377,380,378,379,379,380,383,384,383,385,383,401,383,402,383,404,383,406,383,407,383,410,383,411,383,414,384,404,384,406,384,411,385,407,385,410,385,414,386,400,386,408,387,404,387,412,389,391,389,397,389,399,391,399,392,398,396,398,397,399,398,404,404,406,404,410,406,410,407,411,407,412,407,413,407,414,408,409,410,414,411,413,415,416,415,425,419,427,419,433,420,427,420,433,421,423,421,424,422,424,423,424,423,431,427,433,428,434,428,435,429,435,430,431,430,432,430,433,431,432,431,433,432,433,433,435,434,435],"dock":[346,214,69]};
+// Deterministische 3D-Kraftsimulation: Verknüpfungen ziehen, Notizen stoßen sich ab, Ordner haben je einen Schwerpunkt.
+const GROUP_MAP = { Personen: 0, Firmen: 1, Projekte: 2, Privat: 3, Immobilien: 4, Systeme: 5, Meta: 6 };
+function mulberry32(a) { return () => { a |= 0; a = a + 0x6D2B79F5 | 0; let t = Math.imul(a ^ a >>> 15, 1 | a); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
+function buildGraph(D) {
+  const src = D.groups.map(g => g[0]);
+  const g = D.n.map(k => GROUP_MAP[src[k]] ?? 7);
+  const E = D.e, M = E.length / 2, N = g.length;
+  const deg = new Uint16Array(N + 1);
+  for (let k = 0; k < E.length; k++) deg[E[k]]++;
+  const counts = new Array(8).fill(0); g.forEach(x => counts[x]++);
+  return { N, M, g, E, deg, counts, dock: D.dock };
+}
+function anchors(R) {   // 8 Schwerpunkte auf einer Fibonacci-Kugel
+  const a = [], n = 8, phi = Math.PI * (3 - Math.sqrt(5));
+  for (let i = 0; i < n; i++) { const y = 1 - (i + 0.5) / n * 2, r = Math.sqrt(1 - y * y); a.push([Math.cos(phi * i) * r * R, y * R * 0.85, Math.sin(phi * i) * r * R]); }
+  return a;
+}
+function stepForces(P, V, N, E, g, A, active, opt) {
+  const F = new Float32Array(N * 3);
+  for (let i = 0; i < N; i++) {
+    if (!active[i]) continue;
+    const ix = P[i * 3], iy = P[i * 3 + 1], iz = P[i * 3 + 2];
+    for (let j = i + 1; j < N; j++) {
+      if (!active[j]) continue;
+      let dx = ix - P[j * 3], dy = iy - P[j * 3 + 1], dz = iz - P[j * 3 + 2];
+      let d2 = dx * dx + dy * dy + dz * dz + 25;
+      const f = opt.kr / d2, d = Math.sqrt(d2);
+      dx *= f / d; dy *= f / d; dz *= f / d;
+      F[i * 3] += dx; F[i * 3 + 1] += dy; F[i * 3 + 2] += dz;
+      F[j * 3] -= dx; F[j * 3 + 1] -= dy; F[j * 3 + 2] -= dz;
+    }
+  }
+  for (let k = 0; k < E.length; k += 2) {
+    const a = E[k], b = E[k + 1]; if (!active[a] || !active[b]) continue;
+    const dx = P[b * 3] - P[a * 3], dy = P[b * 3 + 1] - P[a * 3 + 1], dz = P[b * 3 + 2] - P[a * 3 + 2];
+    const d = Math.sqrt(dx * dx + dy * dy + dz * dz) || 0.01, f = opt.ks * (d - opt.L) / d;
+    F[a * 3] += dx * f; F[a * 3 + 1] += dy * f; F[a * 3 + 2] += dz * f;
+    F[b * 3] -= dx * f; F[b * 3 + 1] -= dy * f; F[b * 3 + 2] -= dz * f;
+  }
+  for (let i = 0; i < N; i++) {
+    if (!active[i]) continue;
+    const an = A[g[i]];
+    for (let c = 0; c < 3; c++) {
+      F[i * 3 + c] += (an[c] - P[i * 3 + c]) * opt.kg - P[i * 3 + c] * 0.0015;
+      let v = (V[i * 3 + c] + F[i * 3 + c]) * opt.damp;
+      if (v > opt.vmax) v = opt.vmax; else if (v < -opt.vmax) v = -opt.vmax;
+      V[i * 3 + c] = v; P[i * 3 + c] += v;
+    }
+  }
+}
+let OPT = { kr: 400, ks: 0.02, L: 14, kg: 0.08, damp: 0.74, vmax: 14 }, AR = 600;
+function setOpt(o, r) { OPT = { ...OPT, ...o }; if (r) AR = r; }
+function simulate(G, TICKS = 420, DOCK_TICKS = 300) {
+  const rnd = mulberry32(42), N = G.N + 1, A = anchors(AR);
+  const P = new Float32Array(N * 3), V = new Float32Array(N * 3), active = new Uint8Array(N).fill(1);
+  active[G.N] = 0;
+  for (let i = 0; i < G.N; i++) {   // Startwolke: gleichverteilt in einer Kugel
+    let x, y, z; do { x = rnd() * 2 - 1; y = rnd() * 2 - 1; z = rnd() * 2 - 1; } while (x * x + y * y + z * z > 1);
+    P[i * 3] = x * 620; P[i * 3 + 1] = y * 420; P[i * 3 + 2] = z * 620;
+  }
+  const g = Array.from(G.g); g.push(2);                 // neue Notiz gehört zu Projekte
+  const E = Array.from(G.E);
+  const form = new Float32Array((TICKS + 1) * N * 3); form.set(P, 0);
+  for (let t = 1; t <= TICKS; t++) { stepForces(P, V, N, E, g, A, active, OPT); form.set(P, t * N * 3); }
+  // Andocken: neue Notiz mit drei Verknüpfungen, alle anderen dürfen nachgeben
+  const E2 = E.concat([G.N, G.dock[0], G.N, G.dock[1], G.N, G.dock[2]]);
+  const tg = G.dock.map(d => [P[d * 3], P[d * 3 + 1], P[d * 3 + 2]]);
+  const c = [0, 1, 2].map(k => (tg[0][k] + tg[1][k] + tg[2][k]) / 3);
+  const start = [c[0] * 1.9 + 160, c[1] * 1.9 + 120, c[2] * 1.9 + 160];
+  P[G.N * 3] = start[0]; P[G.N * 3 + 1] = start[1]; P[G.N * 3 + 2] = start[2];
+  active[G.N] = 1; V.fill(0);
+  const dock = new Float32Array((DOCK_TICKS + 1) * N * 3); dock.set(P, 0);
+  for (let t = 1; t <= DOCK_TICKS; t++) { stepForces(P, V, N, E2, g, A, active, { ...OPT, vmax: 9 }); dock.set(P, t * N * 3); }
+  return { N, TICKS, DOCK_TICKS, form, dock, start, g, E2 };
+}
+if (typeof module !== "undefined") module.exports = { buildGraph, simulate, anchors, setOpt };
+
+
+const FARBEN = ["#567d9e", "#a85448", "#3f6b4f", "#a0812f", "#96566f", "#61795a", "#7d6390", "#837b75"];
+const NAMEN = ["Personen", "Firmen", "Projekte", "Privat", "Immobilien", "Systeme", "Meta", "Weitere"];
+const G = buildGraph(D);
+const klemme = (v, a, b) => Math.min(b, Math.max(a, v));
+const weich = x => { x = klemme(x, 0, 1); return x * x * (3 - 2 * x); };
+const ruhig = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const fl = document.getElementById("netz-flaeche"), cv = document.getElementById("netz-cv");
+
+document.getElementById("legende").innerHTML = NAMEN.map((n, k) => `<li><i style="background:${FARBEN[k]}"></i>${n}<b>${G.counts[k]}</b></li>`).join("");
+
+let gestartet = false;
+function starte() {
+  if (gestartet) return; gestartet = true;
+  THREE.ColorManagement.enabled = false;
+  let r;
+  try { r = new THREE.WebGLRenderer({ canvas: cv, antialias: true, alpha: true }); }
+  catch { fl.insertAdjacentHTML("beforeend", '<p style="position:absolute;inset:0;margin:auto;height:fit-content;text-align:center">Dieser Browser zeigt das Netz nicht an, weil WebGL fehlt.</p>'); return; }
+  r.outputColorSpace = THREE.LinearSRGBColorSpace;
+  r.setPixelRatio(Math.min(2, devicePixelRatio || 1)); r.setClearColor(0xffffff, 0);
+  const S = simulate(G, 420, 1), N = G.N, SCHRITT = S.N * 3, TICKS = S.TICKS, M = G.M;
+  const szene = new THREE.Scene(), kamera = new THREE.PerspectiveCamera(40, 16 / 10, 1, 8000);
+  const fb = FARBEN.map(c => new THREE.Color(c));
+  const pos = new Float32Array(N * 3), farbe = new Float32Array(N * 3), groesse = new Float32Array(N);
+  for (let i = 0; i < N; i++) { groesse[i] = 9 + Math.sqrt(G.deg[i]) * 2.7; const c = fb[G.g[i]]; farbe.set([c.r, c.g, c.b], i * 3); }
+  const pg = new THREE.BufferGeometry();
+  pg.setAttribute("position", new THREE.BufferAttribute(pos, 3));
+  pg.setAttribute("farbe", new THREE.BufferAttribute(farbe, 3));
+  pg.setAttribute("groesse", new THREE.BufferAttribute(groesse, 1));
+  const pm = new THREE.ShaderMaterial({
+    uniforms: { uScale: { value: 600 } },
+    vertexShader: `attribute float groesse; attribute vec3 farbe; varying vec3 vF; uniform float uScale;
+      void main() { vec4 mv = modelViewMatrix * vec4(position, 1.0); vF = farbe; gl_PointSize = groesse * uScale / -mv.z; gl_Position = projectionMatrix * mv; }`,
+    fragmentShader: `varying vec3 vF; void main() { float d = length(gl_PointCoord - 0.5) * 2.0; if (d > 1.0) discard; gl_FragColor = vec4(vF, smoothstep(1.0, 0.8, d)); }`,
+    transparent: true, depthWrite: false
+  });
+  const lpos = new Float32Array(M * 6), lfarbe = new Float32Array(M * 6);
+  for (let k = 0; k < M; k++) { const a = fb[G.g[G.E[k * 2]]], b = fb[G.g[G.E[k * 2 + 1]]]; lfarbe.set([a.r, a.g, a.b, b.r, b.g, b.b], k * 6); }
+  const lg = new THREE.BufferGeometry();
+  lg.setAttribute("position", new THREE.BufferAttribute(lpos, 3));
+  lg.setAttribute("color", new THREE.BufferAttribute(lfarbe, 3));
+  const lm = new THREE.LineBasicMaterial({ vertexColors: true, transparent: true, opacity: .05, depthWrite: false });
+  szene.add(new THREE.LineSegments(lg, lm));
+  szene.add(new THREE.Points(pg, pm));
+
+  const marken = NAMEN.map((n, k) => { const el = document.createElement("div"); el.className = "netz-marke"; el.innerHTML = `<i style="background:${FARBEN[k]}"></i>${n} <b>${G.counts[k]}</b>`; fl.appendChild(el); return el; });
+  const v3 = new THREE.Vector3();
+  let az = .3, el = .3, zeit = ruhig ? 7 : 0, W = 1, H = 1, gezogen = false, sichtbar = true, zuletzt = null;
+  const DAUER = 6;
+
+  function zeichne() {
+    const p = klemme(zeit / DAUER, 0, 1), f = TICKS * Math.pow(p, 1.8), i0 = Math.min(TICKS - 1, Math.floor(f)), k = f - i0;
+    for (let i = 0; i < N * 3; i++) { const a = S.form[i0 * SCHRITT + i], b = S.form[(i0 + 1) * SCHRITT + i]; pos[i] = a + (b - a) * k; }
+    pg.attributes.position.needsUpdate = true;
+    for (let q = 0; q < M; q++) {
+      const a = G.E[q * 2] * 3, b = G.E[q * 2 + 1] * 3, o = q * 6;
+      lpos[o] = pos[a]; lpos[o + 1] = pos[a + 1]; lpos[o + 2] = pos[a + 2]; lpos[o + 3] = pos[b]; lpos[o + 4] = pos[b + 1]; lpos[o + 5] = pos[b + 2];
+    }
+    lg.attributes.position.needsUpdate = true;
+    lm.opacity = .05 + .25 * weich((zeit - 2) / 3);
+    const rad = 1500;
+    kamera.position.set(rad * Math.cos(el) * Math.sin(az), rad * Math.sin(el), rad * Math.cos(el) * Math.cos(az));
+    kamera.lookAt(0, 0, 0); kamera.updateMatrixWorld();
+    r.render(szene, kamera);
+    const sicht = weich((zeit - DAUER + .4) / .6);
+    marken.forEach((m, g) => {
+      let x = 0, y = 0, z = 0, n = 0;
+      for (let i = 0; i < N; i++) if (G.g[i] === g) { x += pos[i * 3]; y += pos[i * 3 + 1]; z += pos[i * 3 + 2]; n++; }
+      if (!n) return;
+      v3.set(x / n, y / n + 90, z / n).project(kamera);
+      m.style.opacity = sicht;
+      m.style.transform = `translate(${((v3.x + 1) / 2 * W).toFixed(1)}px, ${((1 - v3.y) / 2 * H).toFixed(1)}px) translate(-50%, -50%)`;
+    });
+  }
+  function groesseNeu() {
+    W = fl.clientWidth; H = fl.clientHeight; if (!W || !H) return;
+    r.setSize(W, H, false); kamera.aspect = W / H; kamera.updateProjectionMatrix();
+    pm.uniforms.uScale.value = (H * r.getPixelRatio()) / (2 * Math.tan(THREE.MathUtils.degToRad(kamera.fov / 2)));
+    zeichne();
+  }
+  new ResizeObserver(groesseNeu).observe(fl);
+  new IntersectionObserver(e => { sichtbar = e[0].isIntersecting; }).observe(fl);
+  function schleife(jetzt) {
+    if (zuletzt == null) zuletzt = jetzt;
+    const dt = Math.min(.05, (jetzt - zuletzt) / 1000); zuletzt = jetzt;
+    if (sichtbar && !document.hidden && !ruhig) {
+      zeit += dt; if (!gezogen) az += dt * .06;
+      zeichne();
+    }
+    requestAnimationFrame(schleife);
+  }
+  groesseNeu();
+  requestAnimationFrame(schleife);
+
+  let griff = null;
+  fl.addEventListener("pointerdown", e => { griff = { x: e.clientX, y: e.clientY }; gezogen = true; });
+  addEventListener("pointerup", () => { griff = null; gezogen = false; });
+  fl.addEventListener("pointermove", e => {
+    if (!griff || !e.buttons) return;
+    az -= (e.clientX - griff.x) * .006; el = klemme(el + (e.clientY - griff.y) * .005, -1.3, 1.3);
+    griff = { x: e.clientX, y: e.clientY };
+    if (ruhig) zeichne();
+  });
+  document.getElementById("neu-sortieren").addEventListener("click", () => { zeit = ruhig ? 7 : 0; if (ruhig) zeichne(); });
+}
+new IntersectionObserver((e, o) => { if (e[0].isIntersecting) { o.disconnect(); starte(); } }, { rootMargin: "300px 0px" }).observe(fl);
+</script>
+
+</body>
+</html>
