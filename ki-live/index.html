@@ -134,12 +134,21 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .qr-karte { display: flex; gap: 1em; align-items: center; color: var(--tinte); text-decoration: none; font-size: var(--t-klein); line-height: 1.4; }
 .qr-karte .qr { width: clamp(96px, 8.5vw, 170px); flex: none; }
 .qr-karte:hover b { color: var(--siegel); }
+/* Live-Abfrage (nur Beamer-Fassung): größerer QR, Klick zeigt ihn bildschirmfüllend für die hinteren Reihen */
+button.qr-karte { background: none; border: 0; padding: 0; font: inherit; text-align: left; cursor: zoom-in; width: 100%; }
+.qr-karte > span:last-child { min-width: 0; overflow-wrap: anywhere; }
+.qr-karte.abfrage .qr { width: clamp(120px, 14vw, 270px); }
+#qr-gross { position: fixed; inset: 0; z-index: 50; background: #ffffff; display: grid; place-items: center; align-content: center; gap: 2vh; cursor: zoom-out; }
+#qr-gross .qr { width: min(78vh, 86vw); }
+#qr-gross p { margin: 0; font-size: clamp(18px, 2.4vw, 40px); font-weight: 600; color: var(--tinte); }
 .hinweisfeld { background: var(--hinweis); padding: .8em 1em; max-width: 62ch; }
 
 .vorlagen { display: grid; gap: clamp(20px, 2.4vw, 40px); grid-template-columns: minmax(0, 1fr); }
 @media (min-width: 1000px) { .vorlagen { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 .vorlage { display: grid; gap: .6em; align-content: start; grid-template-rows: auto 1fr auto; }
 .vorlage pre { margin: 0; font: 400 var(--t-klein)/1.5 var(--mono); white-space: pre-wrap; overflow-wrap: anywhere; border-top: 1px solid var(--linie); padding-top: .7em; }
+.vorlage.raum { grid-column: 1 / -1; grid-template-rows: none; }
+.vorlage.raum .meta { margin: 0; color: var(--grau); font-size: var(--t-klein); }
 .kopieren { justify-self: start; background: none; border: 0; border-bottom: 1px solid var(--tinte); padding: 0; font-size: var(--t-klein); font-weight: 600; }
 .fuss { display: flex; gap: 1em; align-items: center; padding-block: 24px clamp(64px, 8vh, 96px); border-top: 1px solid var(--linie); color: var(--grau); font-size: var(--t-klein); }
 .fuss svg { width: 30px; height: 30px; flex: none; }
@@ -172,7 +181,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
     <a href="https://swenlaempe.github.io/" target="_blank" rel="noopener">swenlaempe.github.io</a>
   </div>
   <div class="text">
-    <p class="kicker">KI-Live · 15.b MASTERCLUB Salescamp · 13.11.2026</p>
+    <p class="kicker">KI-Live · MASTERCLUB Salescamp · 13.11.2026</p>
     <h1>AI – Blabla oder wirklich nachhaltig?</h1>
     <p class="kern">Schau dir die drei Filme an und mach danach die Übung weiter unten. Alles auf dieser Seite stammt aus meinem eigenen System.</p>
     <div class="nur-buehne">
@@ -327,6 +336,25 @@ Schritte:
 Fertig ist es, wenn: [prüfbare Bedingung]
 Das entscheide ich selbst: [was du nicht abgibst]</pre>
       <button class="kopieren" type="button" data-kopie="v-ablauf">Kopieren</button>
+    </article>
+    <article class="vorlage raum">
+      <h3>Euer Ablauf, gebaut am 08.11.2026</h3>
+      <p class="meta">Aus den Antworten der Runde beim MASTERCLUB Salescamp. Einsetzen wie die Vorlage „Ablauf“ oben.</p>
+      <pre id="v-raum"># Ablauf: Workshop nachbereiten
+Wann: Der Workshop ist vorbei, die Flipcharts sind fotografiert.
+Du bekommst: Fotos oder Abschrift der Flipcharts, die vereinbarten Maßnahmen in Stichworten und den Auftrag in einem Satz. Namen sind durch Rollen ersetzt.
+Zuerst: Prüf alle Unterlagen auf Klarnamen und Firmennamen. Findest du trotzdem welche, ersetz sie durch die Rolle und sag mir, wo sie standen.
+Schritte:
+1. Schreib die Flipcharts von den Fotos ab, Bogen für Bogen und Wort für Wort, und ordne sie erst danach nach Themen. Was du nicht lesen kannst, markierst du mit [unleserlich], statt zu raten.
+2. Schreib ein Protokoll auf einer Seite: Ziel, Ergebnisse, Vereinbarungen.
+3. Mach daraus einen Maßnahmenplan: was, wer (Rolle), bis wann, woran man merkt, dass es wirkt.
+4. Entwirf die Mail an den Auftraggeber: Dank, Protokoll und Plan als Anhang, Vorschlag für einen Folgetermin.
+5. Schlag einen Termin in sechs Wochen vor, mit einer Frage, die ich dem Team dann stelle.
+Fertig ist es, wenn: Protokoll, Maßnahmenplan und Mail-Entwurf vorliegen und jede Maßnahme eine Rolle und ein Datum hat.
+Das entscheide ich selbst: ob und wann die Mail rausgeht und was über einzelne Teilnehmer gesagt wird.
+Aus der Runde: Gebaut am 08.11.2026 aus den Antworten von 3 Personen im Raum: meistens Einzelanalysen mit Debriefing, meistgenutztes Tool INSIGHTS MDI, im Mittel 2,7 h je Auftrag für diese Phase. Auf die Frage, was die Nachbereitung so zäh macht, kam: das Abtippen des Flipcharts. Deshalb schreibst du zuerst alles vollständig ab, bevor du zusammenfasst.
+Grenzen: keine echten Namen, ein Geschäftskonto mit Vertrag zur Auftragsverarbeitung, kein Privatkonto. Die Verantwortung für das Ergebnis trage ich.</pre>
+      <button class="kopieren" type="button" data-kopie="v-raum">Kopieren</button>
     </article>
   </div>
   <p>Zum Anfangen reichen eine Notiz und ein KI-Chat. Damit der Agent selbst Dateien lesen kann, nutze ich <a href="https://claude.com/claude-code" target="_blank" rel="noopener">Claude Code</a> im Terminal. Weitere Filme laufen auf <a href="https://swenlaempe.github.io/" target="_blank" rel="noopener">swenlaempe.github.io</a>.</p>
