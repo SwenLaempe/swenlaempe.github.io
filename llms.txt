@@ -8,6 +8,7 @@ Swen Laempe hat die vioma GmbH gegründet und aufgebaut, ein Unternehmen für Ho
 
 Ein Gedanke zu KI, Struktur und Kultur, dazu ein Schritt für deinen Montag, damit du anfängst statt aufzuschieben.
 
+- [Folge 09: Die Box ist das Kleinste.](https://swenlaempe.github.io/montag/09/): Kaufen geht schnell. Die Arbeit steckt in allem drumherum: Wer betreibt den Rechner, wer kommt ran, was soll nie drauf?
 - [Folge 08: Die Wurzelfähigkeit.](https://swenlaempe.github.io/montag/08/): Wer nur KI-Werkzeuge sammelt, hat Blätter ohne Wurzel. Die Wurzel heißt Agentic Coding: Du beschreibst, ein Agent baut, du entscheidest.
 - [Folge 07: Dein Wissen gehört nicht dem Werkzeug.](https://swenlaempe.github.io/montag/07/): Um jede KI wird etwas gebaut: Anweisungen, Wissen, Werkzeuge, Prüfungen. Die KI wechselt, deine Regeln nimmst du mit.
 - [Folge 06: Meine Linie.](https://swenlaempe.github.io/montag/06/): Konnektivität und Führung kreuzen sich bei KI-Empowerment. Je mehr die Maschine erledigt, desto mehr zählt der Ort, an dem Menschen sich begegnen.
@@ -21,6 +22,7 @@ Ein Gedanke zu KI, Struktur und Kultur, dazu ein Schritt für deinen Montag, dam
 
 Ein Ereignis, nach dem in der KI-Welt etwas anders ist als vorher: was passiert ist, was es bedeutet, Fazit.
 
+- [November 2026: Agenten kaufen ein.](https://swenlaempe.github.io/kipppunkt/2026-11-einkauf/): Einkaufen wird ein Auftrag: Du legst fest, was und wann. Ein Agent sucht, du bestätigst. Fazit: Aus Einkaufen wird Auftrag geben.
 - [November 2026: Hotelbuchung: Der Gast schickt seinen Agenten.](https://swenlaempe.github.io/kipppunkt/2026-11-agenten/): Dann entscheidet bei jeder fünften Buchung ein Agent, was der Gast überhaupt zu sehen bekommt. Fazit: Bald sieht der Gast nur, was sein Agent ihm meldet.
 - [Oktober 2026: Tesla Roadster: Lenken wird Signal.](https://swenlaempe.github.io/kipppunkt/2026-10-roadster/): Lenken wird zum Signal, das eine Maschine geben kann. Wer sie einschaltet, bleibt der Fahrer. Fazit: Lenken kann die Maschine. Führen bleibt bei dir. Wer Ziel und Grenzen nicht selbst setzt, lässt den Hersteller führen.
 - [Oktober 2026: REA: KI baut fertige Programme nach.](https://swenlaempe.github.io/kipppunkt/2026-10-rea/): Was ein Programm tut, kann eine KI nachbauen. Der Aufwand schützt nicht mehr, nur noch das Recht. Fazit: Programme werden leichter ersetzbar. Was zählt, sind deine Daten, deine Abläufe und ein Mensch, der für das Ergebnis geradesteht.
