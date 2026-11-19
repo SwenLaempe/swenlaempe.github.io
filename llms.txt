@@ -8,6 +8,9 @@ Swen Laempe hat die vioma GmbH gegründet und aufgebaut, ein Unternehmen für Ho
 
 Ein Gedanke zu KI, Struktur und Kultur, dazu ein Schritt für deinen Montag, damit du anfängst statt aufzuschieben.
 
+- [Folge 12: Ein Passwort allein schützt nicht mehr.](https://swenlaempe.github.io/montag/12/): Eine gefälschte Seite nimmt dein Passwort, und den Code vom Handy reicht sie sofort weiter. Ein Passkey passt nur zur echten Adresse.
+- [Folge 11: Schnell entscheiden, langsam denken.](https://swenlaempe.github.io/montag/11/): Nicht jede Entscheidung braucht ein großes Sprachmodell. Es gibt Modelle, die nichts schreiben: Sie wählen aus deinen Möglichkeiten und geben an, wie sicher sie sind. Mein erster Versuch war schnell und falsch, brauchbar wurde es erst mit Struktur.
+- [Folge 10: Bauzeit und Prüfzeit.](https://swenlaempe.github.io/montag/10/): Ein kleines Werkzeug, mit einem Satz Auftrag gebaut. Nach 1:15 lief es. Meine drei Prüfwerte hat es bestanden, gestimmt hat es trotzdem nicht. Diese Prüfwerte hätte auch ein falsches Werkzeug bestanden.
 - [Folge 09: Die Box ist das Kleinste.](https://swenlaempe.github.io/montag/09/): Kaufen geht schnell. Die Arbeit steckt in allem drumherum: Wer betreibt den Rechner, wer kommt ran, was soll nie drauf?
 - [Folge 08: Die Wurzelfähigkeit.](https://swenlaempe.github.io/montag/08/): Wer nur KI-Werkzeuge sammelt, hat Blätter ohne Wurzel. Die Wurzel heißt Agentic Coding: Du beschreibst, ein Agent baut, du entscheidest.
 - [Folge 07: Dein Wissen gehört nicht dem Werkzeug.](https://swenlaempe.github.io/montag/07/): Um jede KI wird etwas gebaut: Anweisungen, Wissen, Werkzeuge, Prüfungen. Die KI wechselt, deine Regeln nimmst du mit.
